@@ -24,6 +24,13 @@ public class Player : MonoBehaviour
 
     Plane plane = new Plane(Vector3.up, 0);
 
+    Entity entity;
+
+    void Awake()
+    {
+        entity = GetComponent<Entity>();
+    }
+
     private void Update()
     {
         MovementControl();
@@ -39,6 +46,15 @@ public class Player : MonoBehaviour
         if (transform.position != mouseWorldPosition && !IsAttacking && IsMouseOverGameWindow)
         {
             transform.LookAt(mouseWorldPosition);
+
+            float finalSpeed = moveSpeed;
+            if (entity.HasEffectOfType(EntityEffectType.SLOW))
+            {
+                List<EntityEffect> _cachedEffects = entity.GetEffectsByType(EntityEffectType.SLOW);
+                foreach (EntityEffect effect in _cachedEffects)
+                    finalSpeed *= effect.effectConfig.power;
+            }
+
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, moveSpeed * Time.deltaTime);
         }
     }
