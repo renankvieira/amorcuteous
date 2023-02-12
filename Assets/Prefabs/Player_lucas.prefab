@@ -4925,9 +4925,11 @@ LineRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 55d9080bf5804584e9ed06e54ed56786, type: 2}
+  - {fileID: 2100000, guid: 126addddbeb0a8a46929dd972af84c5e, type: 2}
   - {fileID: 2100000, guid: 2734ca04ceddd764aa35dc0235314472, type: 2}
+  - {fileID: 2100000, guid: 0329635e3fb075a468b12089087dbe02, type: 2}
   - {fileID: 2100000, guid: 6c5ca16895fdb67488f0b985cffd0894, type: 2}
-  - {fileID: 2100000, guid: e6f60a9f5bd761146b9a6b95e665da94, type: 2}
+  - {fileID: 2100000, guid: da36ebfa42303674686f4bf4fb152862, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
