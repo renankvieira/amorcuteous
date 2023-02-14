@@ -10,6 +10,8 @@ Material:
   m_Name: character_cloak
   m_Shader: {fileID: 4800000, guid: a36b7719ff0465b42ab1407d67672c5f, type: 3}
   m_ValidKeywords:
+  - POSTERIZE_ON
+  - SHINE_ON
   - WAVEUV_ON
   m_InvalidKeywords:
   - _ALPHAPREMULTIPLY_ON
@@ -164,7 +166,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Glow: 96.6
+    - _Glow: 0
     - _GlowGlobal: 1
     - _GradBlend: 1
     - _GradBoostX: 5
@@ -239,9 +241,9 @@ Material:
     - _ShakeUvX: 1.5
     - _ShakeUvY: 1
     - _ShineGlow: 1
-    - _ShineLocation: 0.594
-    - _ShineRotate: 0.78
-    - _ShineWidth: 0.1
+    - _ShineLocation: 0.713
+    - _ShineRotate: 0.71
+    - _ShineWidth: 0.219
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -275,7 +277,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FadeBurnColor: {r: 1, g: 1, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 0, g: 0.723613, b: 1, a: 1}
+    - _GlowColor: {r: 0.7441572, g: 0.41194963, b: 1, a: 1}
     - _GradBotLeftCol: {r: 0, g: 0, b: 1, a: 1}
     - _GradBotRightCol: {r: 0, g: 1, b: 0, a: 1}
     - _GradTopLeftCol: {r: 1, g: 0, b: 0, a: 1}
