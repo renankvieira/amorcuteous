@@ -13,8 +13,10 @@ public class Entity : MonoBehaviour
 
     public void UpdateEffects()
     {
-        foreach (EntityEffect effect in currentEffects)
+        for (int i = currentEffects.Count-1; i > 0;i--)
+//        foreach (EntityEffect effect in currentEffects)
         {
+            EntityEffect effect = currentEffects[i];
             if (effect.timeOfActivation + effect.effectConfig.duration > Time.time)
             {
                 currentEffects.Remove(effect);

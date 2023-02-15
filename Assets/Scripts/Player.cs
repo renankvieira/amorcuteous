@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
                     finalSpeed *= effect.effectConfig.power;
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
         }
     }
 

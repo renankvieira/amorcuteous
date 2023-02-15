@@ -1926,6 +1926,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7120870821254790917, guid: de59bf8d5b2bafa438c2880edacf5f69, type: 3}
+      propertyPath: currentEffects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7120870821254790917, guid: de59bf8d5b2bafa438c2880edacf5f69, type: 3}
+      propertyPath: currentEffects.Array.data[0].effectConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: bc6fda1de52ee194990af48d872bcd98, type: 2}
+    - target: {fileID: -7120870821254790917, guid: de59bf8d5b2bafa438c2880edacf5f69, type: 3}
+      propertyPath: currentEffects.Array.data[0].timeOfActivation
+      value: 111
+      objectReference: {fileID: 0}
     - target: {fileID: 8753765178365777502, guid: de59bf8d5b2bafa438c2880edacf5f69, type: 3}
       propertyPath: m_Name
       value: Player
