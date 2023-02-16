@@ -22,6 +22,7 @@ public class WeaponCollider : MonoBehaviour
             {
                 print(3);
                 Destroy(other.gameObject);
+                GameManager.Instance.currentEnemyCount--;
             }
         }
     }
