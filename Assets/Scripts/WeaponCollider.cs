@@ -14,14 +14,11 @@ public class WeaponCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(1);
         if (player.IsAttacking)
         {
-            print(2);
             if (other.CompareTag("Enemy"))
             {
-                print(3);
-                Destroy(other.gameObject);
+                other.gameObject.GetComponent<Enemy>().TakeDamage(this);
             }
         }
     }
