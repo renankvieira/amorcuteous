@@ -7,6 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1430210685340044133, guid: 0b3c7762681ce624099fd1df3a141fc6, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750392812234003077, guid: 0b3c7762681ce624099fd1df3a141fc6, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750392812234003077, guid: 0b3c7762681ce624099fd1df3a141fc6, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750392812234003077, guid: 0b3c7762681ce624099fd1df3a141fc6, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750392812234003077, guid: 0b3c7762681ce624099fd1df3a141fc6, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 540
+      objectReference: {fileID: 0}
     - target: {fileID: 5502297782345342044, guid: 0b3c7762681ce624099fd1df3a141fc6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -93,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6174286265047443170, guid: 0b3c7762681ce624099fd1df3a141fc6, type: 3}
       propertyPath: m_Name
-      value: _BaseCanvas
+      value: Canvas Ingame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b3c7762681ce624099fd1df3a141fc6, type: 3}
