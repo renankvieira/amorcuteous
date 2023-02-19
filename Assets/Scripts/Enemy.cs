@@ -5,7 +5,8 @@ using UnityEngine;
 [SelectionBase]
 public class Enemy : MonoBehaviour
 {
-    public Vector3 targetPosition;
+    //public Vector3 targetPosition;
+    public Vector3 direction = Vector3.forward;
     public float speed = 1f;
 
     public int debugX = -100;
@@ -15,22 +16,16 @@ public class Enemy : MonoBehaviour
 
     bool isDead = false;
 
-    private void Update()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
-
-        if (transform.position == targetPosition)
-        {
-            GameManager.Instance.currentEnemyCount--;
-            Destroy(gameObject);
-        }
-    }
-
     public void Initialize(Vector3 targetPosition, int initialX, int initialZ)
     {
-        this.targetPosition = targetPosition;
-        debugX = initialX;
-        debugZ = initialZ;
+        direction = targetPosition - transform.position;
+        direction.y = 0f;
+        direction = direction.normalized;
+    }
+
+    private void Update()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + (direction * speed), speed * Time.deltaTime);
     }
 
     public void TakeDamage(WeaponCollider weaponCollider)
@@ -38,19 +33,27 @@ public class Enemy : MonoBehaviour
         if (isDead)
             return;
 
+        Die(true, weaponCollider.transform);
+    }
+
+    public void Die(bool withEffect, Transform killer)
+    {
+        if (isDead)
+            return;
         isDead = true;
 
-        if (isDead)
+        Destroy(gameObject);
+        GameManager.Instance.currentEnemyCount--;
+
+        if (deathBloodPrefab != null && withEffect)
         {
-            Destroy(gameObject);
-            GameManager.Instance.currentEnemyCount--;
-
-            if (deathBloodPrefab != null)
-            {
-                GameObject deathObject = Instantiate(deathBloodPrefab, transform.position, weaponCollider.transform.rotation);
-                Destroy(deathObject, 5f);
-            }
+            GameObject deathObject = Instantiate(deathBloodPrefab, transform.position, killer.transform.rotation);
+            Destroy(deathObject, 5f);
         }
+    }
 
+    public void OnContactWithPlayerBody(PlayerBodyCollider body)
+    {
+        direction = direction *= -1f;
     }
 }

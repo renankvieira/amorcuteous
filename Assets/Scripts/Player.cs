@@ -72,4 +72,9 @@ public class Player : MonoBehaviour
 
         }
     }
+
+    public void OnBodyContactWithEnemy(Enemy enemy)
+    {
+        // apply stun
+    }
 }
