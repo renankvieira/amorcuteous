@@ -5076,8 +5076,9 @@ GameObject:
   - component: {fileID: 4580130889731196353}
   - component: {fileID: 7352241093040282596}
   - component: {fileID: 4421252019295665646}
+  - component: {fileID: 1412403983}
   m_Layer: 0
-  m_Name: collider
+  m_Name: bodyCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5174,12 +5175,25 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5803621106031127882}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.01
   m_Height: 0.12
   m_Direction: 1
   m_Center: {x: 0.000000007450581, y: -1.1641532e-10, z: 0}
+--- !u!114 &1412403983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5803621106031127882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44731eaa31af304f97ab365b4c20eb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &5932329636203940903
 GameObject:
   m_ObjectHideFlags: 0
@@ -10871,9 +10885,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   mouseWorldPosition: {x: 0, y: 0, z: 0}
-  attackDuration: 0.5
   mainAnimator: {fileID: 1733198502}
-  distanceWatch: 10
+  isAttacking: 0
+  entity: {fileID: 0}
 --- !u!114 &-7120870821254790917
 MonoBehaviour:
   m_ObjectHideFlags: 0

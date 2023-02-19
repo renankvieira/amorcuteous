@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
 
     bool isDead = false;
 
+    public EntityEffectConfig entityEffectOnPlayerContact;
+
     public void Initialize(Vector3 targetPosition, int initialX, int initialZ)
     {
         direction = targetPosition - transform.position;
@@ -43,7 +45,7 @@ public class Enemy : MonoBehaviour
         isDead = true;
 
         Destroy(gameObject);
-        GameManager.Instance.currentEnemyCount--;
+        SpawnManager.Instance.currentEnemyCount--;
 
         if (deathBloodPrefab != null && withEffect)
         {
@@ -55,5 +57,8 @@ public class Enemy : MonoBehaviour
     public void OnContactWithPlayerBody(PlayerBodyCollider body)
     {
         direction = direction *= -1f;
+
+        if (entityEffectOnPlayerContact != null)
+            body.player.entity.ApplyEffect(entityEffectOnPlayerContact);
     }
 }

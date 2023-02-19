@@ -16,6 +16,8 @@ MonoBehaviour:
   effectType: 10
   duration: 3
   power: 0.5
+  replaceOnStack: 1
+  animationTriggerOnActivation: ---
   attachOnActivation: {fileID: 0}
   createOnActivation: {fileID: 0}
   createOnDeactivation: {fileID: 0}

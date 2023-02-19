@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBodyCollider : MonoBehaviour
 {
-    Player player;
+    [HideInInspector] public Player player;
 
     private void Awake()
     {
