@@ -833,6 +833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas Ingame
       objectReference: {fileID: 0}
+    - target: {fileID: 355912854968804422, guid: 549928e01f9313543b2758674221949b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2090544133084929784, guid: 549928e01f9313543b2758674221949b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -915,6 +919,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2090544133084929784, guid: 549928e01f9313543b2758674221949b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089873868615947840, guid: 549928e01f9313543b2758674221949b, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2997,7 +3005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565679263773759476, guid: b1ce9615837920f45985dc2f827e143e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.958669
+      value: 16.73
       objectReference: {fileID: 0}
     - target: {fileID: 4565679263773759476, guid: b1ce9615837920f45985dc2f827e143e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3005,7 +3013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4565679263773759476, guid: b1ce9615837920f45985dc2f827e143e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.321647
+      value: 0.29
       objectReference: {fileID: 0}
     - target: {fileID: 4565679263773759476, guid: b1ce9615837920f45985dc2f827e143e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5997,6 +6005,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1179951482}
     m_Modifications:
+    - target: {fileID: -419951156684785133, guid: a9803f9affff617418668773e490b6fd, type: 3}
+      propertyPath: spawnerIsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 123333757105983525, guid: a9803f9affff617418668773e490b6fd, type: 3}
       propertyPath: m_Name
       value: SpawnManager

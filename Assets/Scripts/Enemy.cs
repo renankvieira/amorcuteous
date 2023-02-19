@@ -49,8 +49,8 @@ public class Enemy : MonoBehaviour
 
         if (deathBloodPrefab != null && withEffect)
         {
-            GameObject deathObject = Instantiate(deathBloodPrefab, transform.position, killer.transform.rotation);
-            Destroy(deathObject, 5f);
+            GameObject deathObject = Instantiate(deathBloodPrefab, transform.position, killer.transform.rotation * Quaternion.AngleAxis(30f, Vector3.up));
+            Destroy(deathObject, 1f);
         }
     }
 

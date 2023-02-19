@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     [Header("Etc")]
     public Animator mainAnimator;
+    public Collider weaponCollider;
     public bool isAttacking = false;
 
     Plane plane = new Plane(Vector3.up, 0);
@@ -66,14 +67,15 @@ public class Player : MonoBehaviour
 
     void AttackControl()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             if (!isAttacking && !entity.HasEffectOfType(EntityEffectType.STUN))
             {
                 mainAnimator.SetTrigger("attack");
             }
-
         }
+        weaponCollider.enabled = isAttacking;
     }
 
     public void OnBodyContactWithEnemy(Enemy enemy)
