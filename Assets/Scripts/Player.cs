@@ -55,7 +55,12 @@ public class Player : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
 
             if (!isStunned)
-                transform.LookAt(mouseWorldPosition);
+            {
+                Quaternion desiredRotation = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector2.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, 1080f * Time.deltaTime);
+
+                //transform.LookAt(mouseWorldPosition);
+            }
         }
     }
 

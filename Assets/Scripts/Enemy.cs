@@ -56,7 +56,9 @@ public class Enemy : MonoBehaviour
 
     public void OnContactWithPlayerBody(PlayerBodyCollider body)
     {
-        direction = direction *= -1f;
+        //direction = direction *= -1f;
+        direction = transform.position - body.transform.position;
+        direction = direction.normalized;
 
         if (entityEffectOnPlayerContact != null)
             body.player.entity.ApplyEffect(entityEffectOnPlayerContact);
