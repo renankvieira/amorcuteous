@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         entity = GetComponent<Entity>();
+        GameManager.Instance.player = this;
     }
 
     private void Update()
@@ -57,8 +58,11 @@ public class Player : MonoBehaviour
 
             if (!isStunned)
             {
-                Quaternion desiredRotation = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector2.up);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, 1080f * Time.deltaTime);
+                if (mouseWorldPosition != transform.position)
+                {
+                    Quaternion desiredRotation = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector2.up);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, 1080f * Time.deltaTime);
+                }
 
                 //transform.LookAt(mouseWorldPosition);
             }

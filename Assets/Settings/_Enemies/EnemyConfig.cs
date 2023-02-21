@@ -16,6 +16,8 @@ public class EnemyConfig : ScriptableObject
     public TouchEffectByPlayer touchEffectByPlayer;
     public TouchEffectToSibling touchEffectToSibling;
 
+    public GameObject deathObject;
+
     public EntityEffectConfig entityEffectOnDeath;
 }
 

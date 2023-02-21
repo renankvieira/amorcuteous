@@ -1,15 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Entity : MonoBehaviour
 {
+    [Header("Config")]
     public List<EntityEffect> currentEffects;
+
+    [Header("Control")]
+    public int hp = 1;
+    public bool isDead = false;
+
+    public GameObject deathPrefab;
+
+    EnemyBase enemy;
+
+    public Action onDamage;
+    public Action onDeath;
+
+    void Start()
+    {
+        enemy = GetComponent<EnemyBase>();
+
+        if (enemy)
+            hp = enemy.enemyConfig.hp;
+    }
 
     private void Update()
     {
         UpdateEffects();
     }
+
+    public void TakeDamage(int damage, DamageType damageType, Transform damageDealerTransform)
+    {
+        if (isDead)
+            return;
+
+        hp -= damage;
+
+        if (hp <= 0)
+        {
+            if (damageType == DamageType.PLAYER_SWORD)
+                Die(true, damageDealerTransform.transform);
+            else
+                Die(false, null);
+        }
+    }
+
+    public void Die(bool withEffect, Transform killer)
+    {
+        if (isDead)
+            return;
+        isDead = true;
+
+        Destroy(gameObject);
+        SpawnManager.Instance.currentEnemyCount--;
+
+        if (deathPrefab != null && withEffect)
+        {
+            GameObject deathObject = Instantiate(deathPrefab, transform.position, killer.transform.rotation * Quaternion.AngleAxis(30f, Vector3.up));
+            Destroy(deathObject, 1f);
+        }
+    }
+
 
     public void UpdateEffects()
     {
@@ -82,4 +136,12 @@ public class Entity : MonoBehaviour
 
         return _cachedEffectList;
     }
+}
+
+
+public enum DamageType
+{
+    PLAYER_SWORD = 0,
+    ACID = 10,
+    ICE = 20
 }
