@@ -13,6 +13,7 @@ public class EnemyConfig : ScriptableObject
     public float rotationToPlayer = 0f;
 
     public TouchEffectToPlayer touchEffectToPlayer;
+    public EntityEffectConfig touchEffectToPlayer_EFC;
     public TouchEffectByPlayer touchEffectByPlayer;
     public TouchEffectToSibling touchEffectToSibling;
 

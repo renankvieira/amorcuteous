@@ -18,7 +18,7 @@ public class WeaponCollider : MonoBehaviour
         {
             if (other.CompareTag("Enemy"))
             {
-                other.gameObject.GetComponent<Enemy>().TakeDamage(this);
+                other.gameObject.GetComponent<EnemyBase>().entity.TakeDamage(1, DamageType.PLAYER_SWORD, transform);
             }
         }
     }

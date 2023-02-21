@@ -18,6 +18,8 @@ public class EnemyBase : MonoBehaviour
         direction = targetPosition - transform.position;
         direction.y = 0f;
         direction = direction.normalized;
+
+        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
     private void Start()
@@ -44,9 +46,10 @@ public class EnemyBase : MonoBehaviour
     {
         direction = transform.position - body.transform.position;
         direction = direction.normalized;
+        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
 
-        //if (entityEffectOnPlayerContact != null)
-            //body.player.entity.ApplyEffect(entityEffectOnPlayerContact);
+        if (enemyConfig.touchEffectToPlayer_EFC != null)
+            body.player.entity.ApplyEffect(enemyConfig.touchEffectToPlayer_EFC);
     }
 }
 

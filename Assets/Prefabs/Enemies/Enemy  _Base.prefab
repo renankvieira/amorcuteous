@@ -96,7 +96,6 @@ GameObject:
   - component: {fileID: 349257253661218419}
   - component: {fileID: 2702730676171116291}
   - component: {fileID: 5443898183182761832}
-  - component: {fileID: 5530223283633605203}
   - component: {fileID: -5879955849745723961}
   - component: {fileID: -8138883731561189469}
   m_Layer: 0
@@ -171,24 +170,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5530223283633605203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641798089476762326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a2824f880fd564ab9418cb44ab6240, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 1}
-  speed: 1
-  debugX: -100
-  debugZ: -100
-  deathBloodPrefab: {fileID: 4853305891166691410, guid: 5b44ed820b3ef1944a142399ab1b6972, type: 3}
-  entityEffectOnPlayerContact: {fileID: 11400000, guid: 8c483540aa716f845bbed792fe7b164c, type: 2}
 --- !u!114 &-5879955849745723961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +185,7 @@ MonoBehaviour:
   enemyConfig: {fileID: 0}
   direction: {x: 0, y: 0, z: 1}
   speed: 5
-  entity: {fileID: 0}
+  entity: {fileID: -8138883731561189469}
 --- !u!114 &-8138883731561189469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,11 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450499c22e8addd40a82fee460cd774a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentEffects: []
   hp: 1
   isDead: 0
-  deathPrefab: {fileID: 0}
-  _cachedEffectList: []
+  currentEffects: []
 --- !u!1 &641798089642731029
 GameObject:
   m_ObjectHideFlags: 0

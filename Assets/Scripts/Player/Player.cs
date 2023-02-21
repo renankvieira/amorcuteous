@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
         weaponCollider.enabled = isAttacking;
     }
 
-    public void OnBodyContactWithEnemy(Enemy enemy)
+    public void OnBodyContactWithEnemy(EnemyBase enemy)
     {
         // apply stun
     }

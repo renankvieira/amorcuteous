@@ -15,7 +15,7 @@ public class PlayerBodyCollider : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            Enemy enemy = other.GetComponent<Enemy>();
+            EnemyBase enemy = other.GetComponent<EnemyBase>();
             enemy.OnContactWithPlayerBody(this);
             player.OnBodyContactWithEnemy(enemy);
         }

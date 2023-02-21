@@ -4956,8 +4956,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450499c22e8addd40a82fee460cd774a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 1
+  isDead: 0
   currentEffects: []
-  _cachedEffectList: []
 --- !u!1 &1068858953399743780
 GameObject:
   m_ObjectHideFlags: 0
@@ -5770,7 +5771,7 @@ Transform:
   m_GameObject: {fileID: 2820480591101594509}
   m_LocalRotation: {x: -0, y: -0, z: 0.000000005268356, w: 1}
   m_LocalPosition: {x: 0, y: -1.92, z: 0}
-  m_LocalScale: {x: 67.72, y: 25.324066, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1068858953399743783}
@@ -5854,7 +5855,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.01
+  m_Radius: 1
   m_Height: 0.12
   m_Direction: 1
   m_Center: {x: 0.000000007450581, y: -1.1641532e-10, z: 0}
