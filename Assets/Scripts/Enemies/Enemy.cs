@@ -9,9 +9,6 @@ public class Enemy : MonoBehaviour
     public Vector3 direction = Vector3.forward;
     public float speed = 1f;
 
-    public int debugX = -100;
-    public int debugZ = -100;
-
     public GameObject deathBloodPrefab;
 
     bool isDead = false;

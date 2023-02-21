@@ -13,7 +13,7 @@ public class GameArea : MonoBehaviour
 
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().Die(false, null);
+            other.GetComponent<EnemyBase>().entity.Dismiss();
         }
     }
 }

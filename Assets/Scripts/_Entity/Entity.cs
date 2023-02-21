@@ -5,16 +5,17 @@ using System;
 
 public class Entity : MonoBehaviour
 {
-    [Header("Config")]
-    public List<EntityEffect> currentEffects;
+    //[Header("Config")]
 
     [Header("Control")]
     public int hp = 1;
     public bool isDead = false;
-
-    public GameObject deathPrefab;
+    public List<EntityEffect> currentEffects;
 
     EnemyBase enemy;
+    GameObject deathPrefab;
+    
+    List<EntityEffect> _cachedEffectList;
 
     public Action onDamage;
     public Action onDeath;
@@ -24,7 +25,10 @@ public class Entity : MonoBehaviour
         enemy = GetComponent<EnemyBase>();
 
         if (enemy)
+        {
             hp = enemy.enemyConfig.hp;
+            deathPrefab = enemy.enemyConfig.deathObject;
+        }
     }
 
     private void Update()
@@ -42,13 +46,13 @@ public class Entity : MonoBehaviour
         if (hp <= 0)
         {
             if (damageType == DamageType.PLAYER_SWORD)
-                Die(true, damageDealerTransform.transform);
+                Die(damageDealerTransform.transform);
             else
-                Die(false, null);
+                Die(null);
         }
     }
 
-    public void Die(bool withEffect, Transform killer)
+    public void Die(Transform killer)
     {
         if (isDead)
             return;
@@ -57,13 +61,22 @@ public class Entity : MonoBehaviour
         Destroy(gameObject);
         SpawnManager.Instance.currentEnemyCount--;
 
-        if (deathPrefab != null && withEffect)
+        if (deathPrefab != null && killer != null)
         {
             GameObject deathObject = Instantiate(deathPrefab, transform.position, killer.transform.rotation * Quaternion.AngleAxis(30f, Vector3.up));
             Destroy(deathObject, 1f);
         }
     }
 
+    public void Dismiss()
+    {
+        if (isDead)
+            return;
+        isDead = true;
+
+        Destroy(gameObject);
+        SpawnManager.Instance.currentEnemyCount--;
+    }
 
     public void UpdateEffects()
     {
@@ -125,9 +138,10 @@ public class Entity : MonoBehaviour
         return false;
     }
 
-    public List<EntityEffect> _cachedEffectList;
     public List<EntityEffect> GetEffectsByType(EntityEffectType entityEffectType)
     {
+        if (_cachedEffectList == null)
+            _cachedEffectList = new List<EntityEffect>();
         _cachedEffectList.Clear();
 
         foreach (EntityEffect effect in currentEffects)
