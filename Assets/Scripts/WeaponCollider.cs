@@ -14,7 +14,7 @@ public class WeaponCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (player.IsAttacking)
+        if (player.isAttacking)
         {
             if (other.CompareTag("Enemy"))
             {

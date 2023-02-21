@@ -13,12 +13,15 @@ public class Entity : MonoBehaviour
 
     public void UpdateEffects()
     {
-        for (int i = currentEffects.Count-1; i > 0;i--)
+        for (int i = currentEffects.Count-1; i >= 0; i--)
 //        foreach (EntityEffect effect in currentEffects)
         {
             EntityEffect effect = currentEffects[i];
-            if (effect.timeOfActivation + effect.effectConfig.duration > Time.time)
+            if (effect.timeOfActivation + effect.effectConfig.duration <= Time.time)
             {
+                if (effect.effectConfig.logUsage)
+                    Debug.LogFormat(this, "Removing EffectConfig: {0}, {1}", effect.effectConfig.name, gameObject.name);
+
                 currentEffects.Remove(effect);
                 if (effect.effectConfig.createOnDeactivation != null)
                     Instantiate(effect.effectConfig.createOnDeactivation, transform.position, effect.effectConfig.createOnDeactivation.transform.rotation);
@@ -26,16 +29,23 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void ApplyEffect(EntityEffectConfig config, bool allowDuplicates)
+    public void ApplyEffect(EntityEffectConfig config)
     {
-        if (!allowDuplicates)
+        if (config.logUsage)
+            Debug.LogFormat(this, "Applying EffectConfig: {0}, {1}", config.name, gameObject.name);
+
+        if (config.replaceOnStack)
         {
             foreach (EntityEffect effect in currentEffects)
             {
                 if (effect.effectConfig == config)
                 {
-                    Debug.LogFormat(this, "Already has EffectConfig: {0}, {1}", config.name, gameObject.name);
-                    return;
+                    //currentEffects.Remove(effect);
+                    effect.timeOfActivation = -1000f;
+
+                    if (effect.effectConfig.logUsage)
+                        Debug.LogFormat(this, "ReplacingOnStack EffectConfig: {0}, {1}", config.name, gameObject.name);
+                    //break;
                 }
             }
         }
@@ -49,6 +59,8 @@ public class Entity : MonoBehaviour
             Instantiate(config.attachOnActivation, transform.position, transform.rotation, transform);
         if (config.createOnActivation)
             Instantiate(config.attachOnActivation, transform.position, config.createOnActivation.transform.rotation);
+        if (config.animationTriggerOnActivation != "---")
+            GetComponent<Animator>().SetTrigger(config.animationTriggerOnActivation);
     }
 
     public bool HasEffectOfType(EntityEffectType entityEffectType)

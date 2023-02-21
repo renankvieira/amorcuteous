@@ -94,8 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 641798089476762327}
   - component: {fileID: 349257253661218419}
-  - component: {fileID: 5530223283633605203}
   - component: {fileID: 2702730676171116291}
+  - component: {fileID: 5443898183182761832}
+  - component: {fileID: 5530223283633605203}
   m_Layer: 0
   m_Name: Enemy  _Base
   m_TagString: Enemy
@@ -139,6 +140,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!135 &2702730676171116291
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641798089476762326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5443898183182761832
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641798089476762326}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &5530223283633605203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,24 +181,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a2824f880fd564ab9418cb44ab6240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 0, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: 1}
   speed: 1
   debugX: -100
   debugZ: -100
   deathBloodPrefab: {fileID: 4853305891166691410, guid: 5b44ed820b3ef1944a142399ab1b6972, type: 3}
---- !u!135 &2702730676171116291
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641798089476762326}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.66
-  m_Center: {x: 0, y: 0, z: 0}
+  entityEffectOnPlayerContact: {fileID: 11400000, guid: 8c483540aa716f845bbed792fe7b164c, type: 2}
 --- !u!1 &641798089642731029
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +415,6 @@ GameObject:
   - component: {fileID: 433680773213778177}
   - component: {fileID: 3392677338640830857}
   - component: {fileID: 6080421780424345104}
-  - component: {fileID: 6097539512961033442}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -470,17 +487,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6097539512961033442
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8239779820974775136}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}

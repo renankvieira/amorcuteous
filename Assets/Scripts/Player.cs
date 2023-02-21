@@ -8,23 +8,16 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
     public Vector3 mouseWorldPosition;
 
-    [Header("Attack")]
-    public float attackDuration = 0.5f;
-    float lastAttackTime;
-
-    public bool IsAttacking => Time.time < lastAttackTime + attackDuration;
     bool IsMouseOverGameWindow { get { return !(0 > Input.mousePosition.x || 0 > Input.mousePosition.y || Screen.width < Input.mousePosition.x || Screen.height < Input.mousePosition.y); } }
-
 
     [Header("Etc")]
     public Animator mainAnimator;
-
-    [Header("Debug")]
-    public float distanceWatch = 0f;
+    public Collider weaponCollider;
+    public bool isAttacking = false;
 
     Plane plane = new Plane(Vector3.up, 0);
 
-    Entity entity;
+    [HideInInspector] public Entity entity;
 
     void Awake()
     {
@@ -43,12 +36,17 @@ public class Player : MonoBehaviour
         if (plane.Raycast(ray, out float distance))
             mouseWorldPosition = ray.GetPoint(distance);
 
-        if (transform.position != mouseWorldPosition && !IsAttacking && IsMouseOverGameWindow)
+        if (transform.position != mouseWorldPosition && !isAttacking && IsMouseOverGameWindow)
         {
-            transform.LookAt(mouseWorldPosition);
+            bool isStunned = entity.HasEffectOfType(EntityEffectType.STUN);
+            bool isSlowed = entity.HasEffectOfType(EntityEffectType.SLOW);
 
             float finalSpeed = moveSpeed;
-            if (entity.HasEffectOfType(EntityEffectType.SLOW))
+            if (isStunned)
+            {
+                finalSpeed = 0f;
+            }
+            else if (isSlowed)
             {
                 List<EntityEffect> _cachedEffects = entity.GetEffectsByType(EntityEffectType.SLOW);
                 foreach (EntityEffect effect in _cachedEffects)
@@ -56,6 +54,14 @@ public class Player : MonoBehaviour
             }
 
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
+
+            if (!isStunned)
+            {
+                Quaternion desiredRotation = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector2.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, 1080f * Time.deltaTime);
+
+                //transform.LookAt(mouseWorldPosition);
+            }
         }
     }
 
@@ -64,12 +70,21 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (!IsAttacking)
+            if (!isAttacking && !entity.HasEffectOfType(EntityEffectType.STUN))
             {
-                lastAttackTime = Time.time;
                 mainAnimator.SetTrigger("attack");
             }
-
         }
+        weaponCollider.enabled = isAttacking;
+    }
+
+    public void OnBodyContactWithEnemy(Enemy enemy)
+    {
+        // apply stun
+    }
+
+    public void ToggleSwingingState (bool active)
+    {
+        isAttacking = active;
     }
 }
