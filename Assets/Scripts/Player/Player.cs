@@ -90,5 +90,6 @@ public class Player : MonoBehaviour
     public void ToggleSwingingState (bool active)
     {
         isAttacking = active;
+        Debug.Log("[P] Swing state: " + isAttacking, this);
     }
 }
