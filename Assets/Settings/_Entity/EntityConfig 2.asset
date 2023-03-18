@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: EntityConfig 2
   m_EditorClassIdentifier: 
   entityType: 10
-  entityName: '-'
+  entityName: Frostie
   hp: 1
-  priority: 0
-  spawnsAimedAtPlayer: 0
-  movementSpeed: 5
-  rotationToPlayer: 0
-  touchEffectToPlayer: 0
+  priority: -3
+  spawnsAimedAtPlayer: 1
+  movementSpeed: 15
+  rotationToPlayer: 5
+  touchEffectToPlayer: 20
   touchEffectToPlayer_EFC: {fileID: 0}
-  touchEffectByPlayer: 0
-  touchEffectToSibling: 0
-  deathObject: {fileID: 0}
+  touchEffectByPlayer: 20
+  touchEffectToSibling: 20
+  deathObject: {fileID: 853601202479904731, guid: f40727ec54f11b84fa9fb1d76f756ac1, type: 3}
   entityEffectOnDeath: {fileID: 0}
-  test: 
   enemyConfig: {fileID: 11400000, guid: 1ee1ef8122940284c85f8158a215ac56, type: 2}

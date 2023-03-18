@@ -10151,6 +10151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450499c22e8addd40a82fee460cd774a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityConfig: {fileID: 11400000, guid: 47735ef81e5380d45a2ac745791c5626, type: 2}
   hp: 1
   isDead: 0
   currentEffects: []

@@ -6,6 +6,7 @@ using System;
 public class Entity : MonoBehaviour
 {
     //[Header("Config")]
+    public EntityConfig entityConfig;
 
     [Header("Control")]
     public int hp = 1;

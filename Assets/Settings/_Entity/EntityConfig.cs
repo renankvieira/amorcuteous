@@ -22,12 +22,15 @@ public class EntityConfig : ScriptableObject
 
     public EntityEffectConfig entityEffectOnDeath;
 
-    public string test;
     public EnemyConfig enemyConfig;
 
     [ButtonSO]
     public void Copy()
     {
+#if UNITY_EDITOR
+        //UnityEditor.Undo.RecordObject(this, "Copied: " + this.name);
+        UnityEditor.EditorUtility.SetDirty(this);
+
         entityName = enemyConfig.enemyName;
         hp = enemyConfig.hp;
         priority = enemyConfig.priority;
@@ -44,8 +47,8 @@ public class EntityConfig : ScriptableObject
 
         entityEffectOnDeath = enemyConfig.entityEffectOnDeath;
 
-#if UNITY_EDITOR
         UnityEditor.AssetDatabase.SaveAssets();
+        UnityEditor.AssetDatabase.Refresh();
 #endif
     }
 
@@ -78,5 +81,5 @@ public enum TouchEffectToSibling
     NONE = 0,
     REVERSES = 10,
     ONE_DIES = 20,
-    BOTH_DIES = 30
+    BOTH_DIE = 30
 }

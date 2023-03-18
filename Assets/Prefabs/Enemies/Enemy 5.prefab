@@ -4902,6 +4902,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8138883731561189469, guid: f835b51dc89f3ff44a284ff15ab741a2, type: 3}
+      propertyPath: entityConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: c8da2c567a3935d4aa2c072e06388e0f, type: 2}
     - target: {fileID: -5879955849745723961, guid: f835b51dc89f3ff44a284ff15ab741a2, type: 3}
       propertyPath: enemyConfig
       value: 

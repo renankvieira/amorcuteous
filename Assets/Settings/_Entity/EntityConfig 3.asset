@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: EntityConfig 3
   m_EditorClassIdentifier: 
   entityType: 10
-  entityName: '-'
+  entityName: Meltie
   hp: 1
-  priority: 0
-  spawnsAimedAtPlayer: 0
+  priority: -10
+  spawnsAimedAtPlayer: 1
   movementSpeed: 5
-  rotationToPlayer: 0
+  rotationToPlayer: 5
   touchEffectToPlayer: 0
   touchEffectToPlayer_EFC: {fileID: 0}
-  touchEffectByPlayer: 0
-  touchEffectToSibling: 0
-  deathObject: {fileID: 0}
+  touchEffectByPlayer: 20
+  touchEffectToSibling: 20
+  deathObject: {fileID: 853601202479904731, guid: eec47022455a76940a4f437b027b90a2, type: 3}
   entityEffectOnDeath: {fileID: 0}
-  test: 
   enemyConfig: {fileID: 11400000, guid: 450348dd89e1d0f4bb86ba94ea2f4957, type: 2}

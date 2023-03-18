@@ -25,5 +25,4 @@ MonoBehaviour:
   touchEffectToSibling: 10
   deathObject: {fileID: 853601202479904731, guid: 2b59d2a6268b35449813a3a381abe652, type: 3}
   entityEffectOnDeath: {fileID: 0}
-  test: 
   enemyConfig: {fileID: 11400000, guid: 855e6bf168a715f47b71c50eaed91f33, type: 2}

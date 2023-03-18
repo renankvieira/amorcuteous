@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: EntityConfig 5
   m_EditorClassIdentifier: 
   entityType: 10
-  entityName: '-'
-  hp: 1
-  priority: 0
+  entityName: Oozle
+  hp: 3
+  priority: 5
   spawnsAimedAtPlayer: 0
   movementSpeed: 5
-  rotationToPlayer: 0
-  touchEffectToPlayer: 0
+  rotationToPlayer: 5
+  touchEffectToPlayer: 40
   touchEffectToPlayer_EFC: {fileID: 0}
   touchEffectByPlayer: 0
-  touchEffectToSibling: 0
-  deathObject: {fileID: 0}
+  touchEffectToSibling: 30
+  deathObject: {fileID: 853601202479904731, guid: f53a1df195a4a8d4685b98df14c5a14b, type: 3}
   entityEffectOnDeath: {fileID: 0}
-  test: 
   enemyConfig: {fileID: 11400000, guid: ce6c3f4aa46bece4595d7f698e4d2d9b, type: 2}
