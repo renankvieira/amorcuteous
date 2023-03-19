@@ -27,8 +27,8 @@ public class Entity : MonoBehaviour
 
         if (enemy)
         {
-            hp = enemy.enemyConfig.hp;
-            deathPrefab = enemy.enemyConfig.deathObject;
+            hp = enemy.entityConfig.hp;
+            deathPrefab = enemy.entityConfig.deathObject;
         }
     }
 
@@ -36,6 +36,81 @@ public class Entity : MonoBehaviour
     {
         UpdateEffects();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (isDead)
+            return;
+
+        if (other.CompareTag("Player"))
+            OnPlayerContact(other.GetComponent<Entity>());
+        else if (other.CompareTag("Enemy"))
+            OnEnemyContact(other.GetComponent<Entity>());
+    }
+
+    public void OnPlayerContact(Entity otherEntity)
+    {
+        switch (entityConfig.touchEffectByPlayer)
+        {
+            case TouchEffectByPlayer.NONE:
+                break;
+            case TouchEffectByPlayer.REVERSES:
+                break;
+            case TouchEffectByPlayer.DIES:
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void OnEnemyContact(Entity otherEntity)
+    {
+        if (this.entityConfig.entityType == EntityType.PLAYER)
+        {
+            switch (entityConfig.touchEffectToPlayer)
+            {
+                case TouchEffectToPlayer.STUNS:
+                    break;
+                case TouchEffectToPlayer.FREEZES:
+                    break;
+                case TouchEffectToPlayer.SMASHES:
+                    break;
+                case TouchEffectToPlayer.ENCAPSULATES:
+                    break;
+                default:
+                    break;
+            }
+
+            return;
+        }
+        else if (this.entityConfig.entityType == EntityType.ENEMY)
+        {
+            // compare priorities. bigger priority kills other.
+            int otherEntityPriority = otherEntity.entityConfig.priority;
+
+            if (otherEntityPriority > entityConfig.priority)
+            {
+                Die(otherEntity.transform);
+            }
+            else if (otherEntityPriority == entityConfig.priority)
+            {
+                if (otherEntity.entityConfig == entityConfig)
+                {
+
+                }
+                else
+                {
+                    Debug.LogWarning("[E] Different entities with same priorities: " + entityConfig.entityName + "x" + otherEntity.entityConfig.entityName, this);
+                }
+            }
+            else if (otherEntityPriority < entityConfig.priority)
+            {
+                // do nothing. other entity own collision will handle it.
+            }
+        }
+
+    }
+
 
     public void TakeDamage(int damage, DamageType damageType, Transform damageDealerTransform)
     {

@@ -22,36 +22,6 @@ public class EntityConfig : ScriptableObject
 
     public EntityEffectConfig entityEffectOnDeath;
 
-    public EnemyConfig enemyConfig;
-
-    [ButtonSO]
-    public void Copy()
-    {
-#if UNITY_EDITOR
-        //UnityEditor.Undo.RecordObject(this, "Copied: " + this.name);
-        UnityEditor.EditorUtility.SetDirty(this);
-
-        entityName = enemyConfig.enemyName;
-        hp = enemyConfig.hp;
-        priority = enemyConfig.priority;
-        spawnsAimedAtPlayer = enemyConfig.spawnsAimedAtPlayer;
-        movementSpeed = enemyConfig.movementSpeed;
-        rotationToPlayer = enemyConfig.rotationToPlayer;
-
-        touchEffectToPlayer = enemyConfig.touchEffectToPlayer;
-        touchEffectToPlayer_EFC = enemyConfig.touchEffectToPlayer_EFC;
-        touchEffectByPlayer = enemyConfig.touchEffectByPlayer;
-        touchEffectToSibling = enemyConfig.touchEffectToSibling;
-
-        deathObject = enemyConfig.deathObject;
-
-        entityEffectOnDeath = enemyConfig.entityEffectOnDeath;
-
-        UnityEditor.AssetDatabase.SaveAssets();
-        UnityEditor.AssetDatabase.Refresh();
-#endif
-    }
-
 }
 
 public enum EntityType

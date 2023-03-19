@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    [Header("Config")]
-    [Expandable] public EnemyConfig enemyConfig;
-
     [Header("Control")]
     public Vector3 direction = Vector3.forward;
     public float speed = 5f;
 
     public Entity entity;
+    public EntityConfig entityConfig => entity.entityConfig;
 
     public void Initialize(Vector3 targetPosition)
     {
@@ -24,7 +22,7 @@ public class EnemyBase : MonoBehaviour
 
     private void Start()
     {
-        speed = enemyConfig.movementSpeed;
+        speed = entityConfig.movementSpeed;
     }
 
     private void Update()
@@ -32,7 +30,7 @@ public class EnemyBase : MonoBehaviour
         if (GameManager.Instance.player != null)
         {
             Quaternion desiredRotation = Quaternion.LookRotation(GameManager.Instance.player.transform.position - transform.position, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, enemyConfig.rotationToPlayer * Time.deltaTime * 1000f);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, entityConfig.rotationToPlayer * Time.deltaTime * 1000f);
 
 
 
@@ -48,8 +46,8 @@ public class EnemyBase : MonoBehaviour
         direction = direction.normalized;
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
 
-        if (enemyConfig.touchEffectToPlayer_EFC != null)
-            body.player.entity.ApplyEffect(enemyConfig.touchEffectToPlayer_EFC);
+        if (entityConfig.touchEffectToPlayer_EFC != null)
+            body.player.entity.ApplyEffect(entityConfig.touchEffectToPlayer_EFC);
     }
 }
 
