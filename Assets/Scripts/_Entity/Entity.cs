@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,6 +71,7 @@ public class Entity : MonoBehaviour
             switch (entityConfig.touchEffectToPlayer)
             {
                 case TouchEffectToPlayer.STUNS:
+                    //player is stunned
                     break;
                 case TouchEffectToPlayer.FREEZES:
                     break;
@@ -96,7 +98,17 @@ public class Entity : MonoBehaviour
             {
                 if (otherEntity.entityConfig == entityConfig)
                 {
-
+                    switch (entityConfig.touchEffectToSibling)
+                    {
+                        case TouchEffectToSibling.REVERSES:
+                            break;
+                        case TouchEffectToSibling.ONE_DIES:
+                            break;
+                        case TouchEffectToSibling.BOTH_DIE:
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 else
                 {
@@ -227,7 +239,6 @@ public class Entity : MonoBehaviour
         return _cachedEffectList;
     }
 }
-
 
 public enum DamageType
 {

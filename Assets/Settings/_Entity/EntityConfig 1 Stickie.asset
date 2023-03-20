@@ -9,17 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e458744d607406942b3a52353c93491f, type: 3}
-  m_Name: EnemyConfig 1 Stickie
+  m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
+  m_Name: EntityConfig 1 Stickie
   m_EditorClassIdentifier: 
-  enemyName: Stickie
+  entityType: 10
+  entityName: Stickie
   hp: 1
   priority: -5
   spawnsAimedAtPlayer: 1
   movementSpeed: 5
   rotationToPlayer: 0
   touchEffectToPlayer: 10
+  touchEffectToPlayer_EFC: {fileID: 0}
   touchEffectByPlayer: 20
   touchEffectToSibling: 20
   deathObject: {fileID: 853601202479904731, guid: 1e6494f08a70af94ab86037ae554a949, type: 3}
   entityEffectOnDeath: {fileID: 0}
+  enemyConfig: {fileID: 11400000, guid: 656141d330839d04e8c95b59ef2351fa, type: 2}

@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
-  m_Name: EntityConfig 3
+  m_Name: EntityConfig 4 Grinder
   m_EditorClassIdentifier: 
   entityType: 10
-  entityName: Meltie
-  hp: 1
-  priority: -10
-  spawnsAimedAtPlayer: 1
+  entityName: Grinder
+  hp: 3
+  priority: 50
+  spawnsAimedAtPlayer: 0
   movementSpeed: 5
   rotationToPlayer: 5
-  touchEffectToPlayer: 0
+  touchEffectToPlayer: 30
   touchEffectToPlayer_EFC: {fileID: 0}
-  touchEffectByPlayer: 20
-  touchEffectToSibling: 20
-  deathObject: {fileID: 853601202479904731, guid: eec47022455a76940a4f437b027b90a2, type: 3}
+  touchEffectByPlayer: 0
+  touchEffectToSibling: 10
+  deathObject: {fileID: 853601202479904731, guid: b8f6443e1fcfad4438076db3a430692a, type: 3}
   entityEffectOnDeath: {fileID: 0}
-  enemyConfig: {fileID: 11400000, guid: 450348dd89e1d0f4bb86ba94ea2f4957, type: 2}
+  enemyConfig: {fileID: 11400000, guid: 630e7fb3705a0ed4c9bdc3708410d994, type: 2}

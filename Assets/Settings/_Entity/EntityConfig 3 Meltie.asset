@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
-  m_Name: EntityConfig 1
+  m_Name: EntityConfig 3 Meltie
   m_EditorClassIdentifier: 
   entityType: 10
-  entityName: Stickie
+  entityName: Meltie
   hp: 1
-  priority: -5
+  priority: -10
   spawnsAimedAtPlayer: 1
   movementSpeed: 5
-  rotationToPlayer: 0
-  touchEffectToPlayer: 10
+  rotationToPlayer: 5
+  touchEffectToPlayer: 0
   touchEffectToPlayer_EFC: {fileID: 0}
   touchEffectByPlayer: 20
   touchEffectToSibling: 20
-  deathObject: {fileID: 853601202479904731, guid: 1e6494f08a70af94ab86037ae554a949, type: 3}
+  deathObject: {fileID: 853601202479904731, guid: eec47022455a76940a4f437b027b90a2, type: 3}
   entityEffectOnDeath: {fileID: 0}
-  enemyConfig: {fileID: 11400000, guid: 656141d330839d04e8c95b59ef2351fa, type: 2}
+  enemyConfig: {fileID: 11400000, guid: 450348dd89e1d0f4bb86ba94ea2f4957, type: 2}
