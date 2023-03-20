@@ -53,11 +53,11 @@ public class Entity : MonoBehaviour
     {
         switch (entityConfig.touchEffectByPlayer)
         {
-            case TouchEffectByPlayer.NONE:
-                break;
             case TouchEffectByPlayer.REVERSES:
+                enemy.ReverseOnContact(otherEntity.transform);
                 break;
             case TouchEffectByPlayer.DIES:
+                Die(otherEntity.transform);
                 break;
             default:
                 break;
@@ -68,22 +68,8 @@ public class Entity : MonoBehaviour
     {
         if (this.entityConfig.entityType == EntityType.PLAYER)
         {
-            switch (entityConfig.touchEffectToPlayer)
-            {
-                case TouchEffectToPlayer.STUNS:
-                    //player is stunned
-                    break;
-                case TouchEffectToPlayer.FREEZES:
-                    break;
-                case TouchEffectToPlayer.SMASHES:
-                    break;
-                case TouchEffectToPlayer.ENCAPSULATES:
-                    break;
-                default:
-                    break;
-            }
-
-            return;
+            if (otherEntity.entityConfig.touchEffectToPlayer_EFC != null)
+                ApplyEffect(otherEntity.entityConfig.touchEffectToPlayer_EFC);
         }
         else if (this.entityConfig.entityType == EntityType.ENEMY)
         {
@@ -101,10 +87,16 @@ public class Entity : MonoBehaviour
                     switch (entityConfig.touchEffectToSibling)
                     {
                         case TouchEffectToSibling.REVERSES:
+                            enemy.ReverseOnContact(otherEntity.transform);
                             break;
                         case TouchEffectToSibling.ONE_DIES:
+                            if (UnityEngine.Random.value > 0.5f) // who dies?
+                                Die(otherEntity.transform);
+                            else
+                                otherEntity.Die(transform);
                             break;
                         case TouchEffectToSibling.BOTH_DIE:
+                            Die(otherEntity.transform);
                             break;
                         default:
                             break;
@@ -186,6 +178,9 @@ public class Entity : MonoBehaviour
 
     public void ApplyEffect(EntityEffectConfig config)
     {
+        if (isDead)
+            return;
+
         if (config.logUsage)
             Debug.LogFormat(this, "Applying EffectConfig: {0}, {1}", config.name, gameObject.name);
 
