@@ -6,7 +6,7 @@ using System;
 
 public class Entity : MonoBehaviour
 {
-    //[Header("Config")]
+    [Header("Config")]
     public EntityConfig entityConfig;
 
     [Header("Control")]
@@ -15,9 +15,13 @@ public class Entity : MonoBehaviour
     public List<EntityEffect> currentEffects;
 
     EnemyBase enemy;
-    GameObject deathPrefab;
+    EnemyDeathObject deathPrefab;
     
     List<EntityEffect> _cachedEffectList;
+
+    [Header("Debug")]
+    public bool logContacts = false;
+    public bool logEffects = false;
 
     public Action onDamage;
     public Action onDeath;
@@ -51,6 +55,9 @@ public class Entity : MonoBehaviour
 
     public void OnPlayerContact(Entity otherEntity)
     {
+        if (logContacts)
+            Debug.Log("[E] Contact to Player: " + entityConfig.entityName + " x " + otherEntity.entityConfig.entityName, this);
+
         switch (entityConfig.touchEffectByPlayer)
         {
             case TouchEffectByPlayer.REVERSES:
@@ -66,6 +73,9 @@ public class Entity : MonoBehaviour
 
     public void OnEnemyContact(Entity otherEntity)
     {
+        if (logContacts)
+            Debug.Log("[E] Contact to Enemy: " + entityConfig.entityName + " x " + otherEntity.entityConfig.entityName, this);
+
         if (this.entityConfig.entityType == EntityType.PLAYER)
         {
             if (otherEntity.entityConfig.touchEffectToPlayer_EFC != null)
@@ -143,8 +153,7 @@ public class Entity : MonoBehaviour
 
         if (deathPrefab != null && killer != null)
         {
-            GameObject deathObject = Instantiate(deathPrefab, transform.position, killer.transform.rotation * Quaternion.AngleAxis(30f, Vector3.up));
-            Destroy(deathObject, 1f);
+            EnemyDeathObject deathObject = Instantiate(deathPrefab, transform.position, killer.transform.rotation * Quaternion.AngleAxis(30f, Vector3.up));
         }
     }
 
@@ -166,7 +175,7 @@ public class Entity : MonoBehaviour
             EntityEffect effect = currentEffects[i];
             if (effect.timeOfActivation + effect.effectConfig.duration <= Time.time)
             {
-                if (effect.effectConfig.logUsage)
+                if (effect.effectConfig.logUsage || logEffects)
                     Debug.LogFormat(this, "Removing EffectConfig: {0}, {1}", effect.effectConfig.name, gameObject.name);
 
                 currentEffects.Remove(effect);
@@ -181,7 +190,7 @@ public class Entity : MonoBehaviour
         if (isDead)
             return;
 
-        if (config.logUsage)
+        if (config.logUsage || logEffects)
             Debug.LogFormat(this, "Applying EffectConfig: {0}, {1}", config.name, gameObject.name);
 
         if (config.replaceOnStack)
@@ -193,7 +202,7 @@ public class Entity : MonoBehaviour
                     //currentEffects.Remove(effect);
                     effect.timeOfActivation = -1000f;
 
-                    if (effect.effectConfig.logUsage)
+                    if (config.logUsage || logEffects)
                         Debug.LogFormat(this, "ReplacingOnStack EffectConfig: {0}, {1}", config.name, gameObject.name);
                     //break;
                 }
@@ -232,6 +241,35 @@ public class Entity : MonoBehaviour
                 _cachedEffectList.Add(effect);
 
         return _cachedEffectList;
+    }
+
+
+
+
+
+    //TODO: Remove effects type. Instead, put on effect config itself: "multiplicative slow", "prevents movement".
+    // or "stuns"
+
+    public float GetSpeedMultiplier()
+    {
+        float speedMultiplier = 1f;
+        if (IsStunned())
+        {
+            speedMultiplier = 0f;
+        }
+        else if (HasEffectOfType(EntityEffectType.SLOW))
+        {
+            List<EntityEffect> _cachedEffects = GetEffectsByType(EntityEffectType.SLOW);
+            foreach (EntityEffect effect in _cachedEffects)
+                speedMultiplier *= effect.effectConfig.power;
+        }
+
+        return speedMultiplier;
+    }
+
+    public bool IsStunned()
+    {
+        return HasEffectOfType(EntityEffectType.STUN);
     }
 }
 

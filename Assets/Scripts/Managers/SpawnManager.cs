@@ -13,7 +13,8 @@ public class SpawnManager : SingletonOfType<SpawnManager>
     public int limitOfMaxEnemies = 10;
 
     public float spawnFrequency = 3f;
-    public EnemyBase enemyPrefab;
+    public EnemyBase[] enemyPrefabs;
+    //public EnemyBase enemyPrefab;
     public Transform upperLeftBoundary;
     public Transform lowerRightBoundary;
 
@@ -56,7 +57,7 @@ public class SpawnManager : SingletonOfType<SpawnManager>
                 Vector3 spawnPosition = GetRandomBoundaryPosition(horizontalPosition, verticalPosition);
                 Vector3 targetPosition = GetRandomBoundaryPosition(horizontalPosition * -1, verticalPosition * -1);
 
-                EnemyBase newEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                EnemyBase newEnemy = Instantiate(enemyPrefabs.GetRandom(), spawnPosition, Quaternion.identity);
                 newEnemy.Initialize(targetPosition);
 
                 currentEnemyCount++;

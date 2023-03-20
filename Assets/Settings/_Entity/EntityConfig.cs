@@ -18,7 +18,7 @@ public class EntityConfig : ScriptableObject
     public TouchEffectByPlayer touchEffectByPlayer;
     public TouchEffectToSibling touchEffectToSibling;
 
-    public GameObject deathObject;
+    public EnemyDeathObject deathObject;
 
     public EntityEffectConfig entityEffectOnDeath;
 

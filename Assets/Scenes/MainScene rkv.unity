@@ -638,6 +638,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_new 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7675069679687525948, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
+      propertyPath: logEffects
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675069679687525948, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
+      propertyPath: logContacts
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
 --- !u!1 &827291710

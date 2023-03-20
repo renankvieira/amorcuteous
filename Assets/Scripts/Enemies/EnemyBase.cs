@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     [Header("Control")]
-    //public Vector3 direction = Vector3.forward;
     public float speed = 5f;
 
     public Entity entity;
@@ -34,7 +33,7 @@ public class EnemyBase : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, entityConfig.rotationToPlayer * Time.deltaTime * 1000f);
         }
 
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * entity.GetSpeedMultiplier() * Time.deltaTime);
     }
 
     public void OnContactWithPlayerBody(PlayerBodyCollider body)

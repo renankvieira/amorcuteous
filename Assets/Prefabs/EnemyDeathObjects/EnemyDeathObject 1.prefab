@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7007869772344754983, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
       propertyPath: m_Name
-      value: EnemyDeathObject  Base
+      value: EnemyDeathObject 1
       objectReference: {fileID: 0}
     - target: {fileID: 7975787091861805477, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +54,14 @@ PrefabInstance:
     - target: {fileID: 7975787091861805477, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413936831698858534, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: entityEffectConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: bc6fda1de52ee194990af48d872bcd98, type: 2}
+    - target: {fileID: 9028618335521843401, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}

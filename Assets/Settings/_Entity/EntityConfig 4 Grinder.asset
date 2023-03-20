@@ -23,6 +23,5 @@ MonoBehaviour:
   touchEffectToPlayer_EFC: {fileID: 0}
   touchEffectByPlayer: 0
   touchEffectToSibling: 10
-  deathObject: {fileID: 853601202479904731, guid: b8f6443e1fcfad4438076db3a430692a, type: 3}
+  deathObject: {fileID: 3642440329064100580, guid: b8f6443e1fcfad4438076db3a430692a, type: 3}
   entityEffectOnDeath: {fileID: 0}
-  enemyConfig: {fileID: 11400000, guid: 630e7fb3705a0ed4c9bdc3708410d994, type: 2}
