@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
   m_Name: EntityConfig Player
   m_EditorClassIdentifier: 
-  entityName: '-'
+  entityType: 0
+  entityName: Player
   hp: 1
   priority: 0
   spawnsAimedAtPlayer: 0

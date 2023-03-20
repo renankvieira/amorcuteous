@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
   m_Name: EntityConfig 0 Greenie
   m_EditorClassIdentifier: 
-  entityType: 0
+  entityType: 10
   entityName: Greenie
   hp: 1
   priority: 0
@@ -25,4 +25,3 @@ MonoBehaviour:
   touchEffectToSibling: 10
   deathObject: {fileID: 853601202479904731, guid: 2b59d2a6268b35449813a3a381abe652, type: 3}
   entityEffectOnDeath: {fileID: 0}
-  enemyConfig: {fileID: 11400000, guid: 855e6bf168a715f47b71c50eaed91f33, type: 2}
