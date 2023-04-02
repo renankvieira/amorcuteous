@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
-  m_Name: EntityConfig 1 Stickie
+  m_Name: 2 Frostie
   m_EditorClassIdentifier: 
   entityType: 10
-  entityName: Stickie
+  entityName: Frostie
   hp: 1
-  priority: -5
+  priority: -3
   spawnsAimedAtPlayer: 1
-  movementSpeed: 4
-  rotationToPlayer: 0.015
-  touchEffectToPlayer: 10
+  movementSpeed: 15
+  rotationToPlayer: 5
+  touchEffectToPlayer: 20
   touchEffectToPlayer_EFC: {fileID: 0}
   touchEffectByPlayer: 20
   touchEffectToSibling: 20
-  deathObject: {fileID: 3642440329064100580, guid: 1e6494f08a70af94ab86037ae554a949, type: 3}
+  deathObject: {fileID: 3642440329064100580, guid: f40727ec54f11b84fa9fb1d76f756ac1, type: 3}
   entityEffectOnDeath: {fileID: 0}

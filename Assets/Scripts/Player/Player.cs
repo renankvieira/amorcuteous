@@ -43,19 +43,6 @@ public class Player : MonoBehaviour
 
 
             bool isStunned = entity.IsStunned();
-            //bool isSlowed = entity.HasEffectOfType(EntityEffectType.SLOW);
-
-            //float finalSpeed = moveSpeed;
-            //if (isStunned)
-            //{
-            //    finalSpeed = 0f;
-            //}
-            //else if (isSlowed)
-            //{
-            //    List<EntityEffect> _cachedEffects = entity.GetEffectsByType(EntityEffectType.SLOW);
-            //    foreach (EntityEffect effect in _cachedEffects)
-            //        finalSpeed *= effect.effectConfig.power;
-            //}
 
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
 

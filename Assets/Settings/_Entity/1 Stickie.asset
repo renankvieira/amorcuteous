@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
-  m_Name: EntityConfig 0 Greenie
+  m_Name: 1 Stickie
   m_EditorClassIdentifier: 
   entityType: 10
-  entityName: Greenie
+  entityName: Stickie
   hp: 1
-  priority: 0
-  spawnsAimedAtPlayer: 0
-  movementSpeed: 2
-  rotationToPlayer: 0
+  priority: -5
+  spawnsAimedAtPlayer: 1
+  movementSpeed: 4
+  rotationToPlayer: 0.015
   touchEffectToPlayer: 10
-  touchEffectToPlayer_EFC: {fileID: 11400000, guid: 8c483540aa716f845bbed792fe7b164c, type: 2}
-  touchEffectByPlayer: 10
-  touchEffectToSibling: 10
-  deathObject: {fileID: 3642440329064100580, guid: 2b59d2a6268b35449813a3a381abe652, type: 3}
+  touchEffectToPlayer_EFC: {fileID: 0}
+  touchEffectByPlayer: 20
+  touchEffectToSibling: 20
+  deathObject: {fileID: 3642440329064100580, guid: 1e6494f08a70af94ab86037ae554a949, type: 3}
   entityEffectOnDeath: {fileID: 0}

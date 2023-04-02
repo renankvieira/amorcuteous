@@ -20,6 +20,11 @@ public class EntityEffectConfig : ScriptableObject
 
     [Header("Debug")]
     public bool logUsage = false;
+
+
+    [Header("Temp/Tests")] // remove effect type, put these generic descriptions.
+    public float speedDecreaseMultiplier = 0f;
+    public bool stunsPlayer = false;
 }
 
 public enum EntityEffectType
