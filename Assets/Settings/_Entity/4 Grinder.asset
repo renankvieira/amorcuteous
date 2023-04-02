@@ -19,9 +19,10 @@ MonoBehaviour:
   spawnsAimedAtPlayer: 0
   movementSpeed: 5
   rotationToPlayer: 5
-  touchEffectToPlayer: 30
-  touchEffectToPlayer_EFC: {fileID: 0}
+  touchEffectToPlayer: {fileID: 11400000, guid: 65062b0141a8c3743a65e37164c0ce50, type: 2}
+  touchEffectToPlayer_EEC: {fileID: 11400000, guid: 65062b0141a8c3743a65e37164c0ce50, type: 2}
   touchEffectByPlayer: 0
   touchEffectToSibling: 10
   deathObject: {fileID: 3642440329064100580, guid: b8f6443e1fcfad4438076db3a430692a, type: 3}
-  entityEffectOnDeath: {fileID: 0}
+  gooEntityEffect: {fileID: 0}
+  blastEntityEffect: {fileID: 0}

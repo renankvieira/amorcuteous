@@ -78,8 +78,8 @@ public class Entity : MonoBehaviour
 
         if (this.entityConfig.entityType == EntityType.PLAYER)
         {
-            if (otherEntity.entityConfig.touchEffectToPlayer_EFC != null)
-                ApplyEffect(otherEntity.entityConfig.touchEffectToPlayer_EFC);
+            if (otherEntity.entityConfig.touchEffectToPlayer != null)
+                ApplyEffect(otherEntity.entityConfig.touchEffectToPlayer);
         }
         else if (this.entityConfig.entityType == EntityType.ENEMY)
         {

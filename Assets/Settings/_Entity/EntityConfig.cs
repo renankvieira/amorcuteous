@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EntityConfig_", menuName = "General/New Entity Config")]
 public class EntityConfig : ScriptableObject
 {
+    [Header("Main")]
     public EntityType entityType;
     public string entityName = "-";
     public int hp = 1;
@@ -13,13 +14,13 @@ public class EntityConfig : ScriptableObject
     public float movementSpeed = 5f;
     public float rotationToPlayer = 0f;
 
-    public TouchEffectToPlayer touchEffectToPlayer;
-    [Expandable] public EntityEffectConfig touchEffectToPlayer_EFC;
+    [Header("Touch")]
+    public EntityEffectConfig touchEffectToPlayer;
     public TouchEffectByPlayer touchEffectByPlayer;
     public TouchEffectToSibling touchEffectToSibling;
 
+    [Header("Death")]
     public EnemyDeathObject deathObject;
-
     public EntityEffectConfig gooEntityEffect;
     public EntityEffectConfig blastEntityEffect;
 }

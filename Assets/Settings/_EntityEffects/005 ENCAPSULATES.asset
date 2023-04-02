@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01820a5014d54434e8be1838a53f1887, type: 3}
-  m_Name: 005
+  m_Name: 005 ENCAPSULATES
   m_EditorClassIdentifier: 
   effectName: stun
   effectType: 20
