@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyGameObject : GenericActionCaller
+public class DisableGameObject : GenericActionCaller
 {
     public bool targetSelf = false;
     public GameObject targetGameObject;
@@ -10,13 +10,13 @@ public class DestroyGameObject : GenericActionCaller
     public override void MethodToCall()
     {
         base.MethodToCall();
-        DestroyObject();
+        DisableObject();
     }
 
-    public void DestroyObject()
+    public void DisableObject()
     {
         if (targetSelf)
             targetGameObject = gameObject;
-        Destroy(targetGameObject);
+        targetGameObject.SetActive(false);
     }
 }

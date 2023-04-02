@@ -176,7 +176,7 @@ public class Entity : MonoBehaviour
             if (effect.timeOfActivation + effect.effectConfig.duration <= Time.time)
             {
                 if (effect.effectConfig.logUsage || logEffects)
-                    Debug.LogFormat(this, "Removing EffectConfig: {0}, {1}", effect.effectConfig.name, gameObject.name);
+                    Debug.LogFormat(this, "Removing EffectConfig: [{0}], [{1}]", effect.effectConfig.name, gameObject.name);
 
                 currentEffects.Remove(effect);
                 if (effect.effectConfig.createOnDeactivation != null)
@@ -191,7 +191,7 @@ public class Entity : MonoBehaviour
             return;
 
         if (config.logUsage || logEffects)
-            Debug.LogFormat(this, "Applying EffectConfig: {0}, {1}", config.name, gameObject.name);
+            Debug.LogFormat(this, "Applying EffectConfig: [{0}], [{1}]", config.name, gameObject.name);
 
         if (config.replaceOnStack)
         {
@@ -203,7 +203,7 @@ public class Entity : MonoBehaviour
                     effect.timeOfActivation = -1000f;
 
                     if (config.logUsage || logEffects)
-                        Debug.LogFormat(this, "ReplacingOnStack EffectConfig: {0}, {1}", config.name, gameObject.name);
+                        Debug.LogFormat(this, "ReplacingOnStack EffectConfig: [{0}], [{1}]", config.name, gameObject.name);
                     //break;
                 }
             }

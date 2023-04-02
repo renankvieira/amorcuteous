@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class EntityEffectApplier : MonoBehaviour
 {
-    public EntityEffectConfig entityEffectConfig;
+    [Header("Control")]
+    public EntityEffectConfig entityEffectToApply;
     public bool destroyOnApply = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
-            if (entityEffectConfig != null)
-                other.GetComponent<Entity>().ApplyEffect(entityEffectConfig);
+            if (entityEffectToApply != null)
+                other.GetComponent<Entity>().ApplyEffect(entityEffectToApply);
             if (destroyOnApply)
                 Destroy(gameObject);
         }

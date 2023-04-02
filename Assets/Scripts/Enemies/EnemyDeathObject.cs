@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class EnemyDeathObject : MonoBehaviour
 {
-    [Header("Config")]
-    public float timeToLive = 2f;
-    public EntityEffectConfig entityEffectConfig;
+    [Header("References")]
+    public EntityEffectApplier gooEntityEffectApplier;
+    public EntityEffectApplier blastEntityEffectApplier;
+    public GameObject blastParent;
 
-    private void Start()
+    public void Initialize(EntityConfig entityConfig)
     {
-        Destroy(gameObject, timeToLive);
+        gooEntityEffectApplier.entityEffectToApply = entityConfig.gooEntityEffect;
+        blastEntityEffectApplier.entityEffectToApply = entityConfig.blastEntityEffect;
+
+        blastParent.SetActive(entityConfig.blastEntityEffect != null);
     }
 }

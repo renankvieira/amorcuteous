@@ -8,6 +8,11 @@ public class SelfDisable : GenericActionCaller
     {
         base.MethodToCall();
 
+        DisableSelf();
+    }
+
+    public void DisableSelf()
+    {
         gameObject.SetActive(false);
     }
 

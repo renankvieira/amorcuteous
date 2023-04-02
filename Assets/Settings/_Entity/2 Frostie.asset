@@ -19,7 +19,7 @@ MonoBehaviour:
   spawnsAimedAtPlayer: 1
   movementSpeed: 15
   rotationToPlayer: 5
-  touchEffectToPlayer: 20
+  touchEffectToPlayer: 0
   touchEffectToPlayer_EFC: {fileID: 0}
   touchEffectByPlayer: 20
   touchEffectToSibling: 20

@@ -20,8 +20,8 @@ public class EntityConfig : ScriptableObject
 
     public EnemyDeathObject deathObject;
 
-    public EntityEffectConfig entityEffectOnDeath;
-
+    public EntityEffectConfig gooEntityEffect;
+    public EntityEffectConfig blastEntityEffect;
 }
 
 public enum EntityType
@@ -34,7 +34,6 @@ public enum TouchEffectToPlayer
 {
     NONE = 0,
     STUNS = 10,
-    FREEZES = 20,
     SMASHES = 30,
     ENCAPSULATES = 40
 }
