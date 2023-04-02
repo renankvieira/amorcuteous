@@ -31,14 +31,6 @@ public enum EntityType
     ENEMY = 10
 }
 
-public enum TouchEffectToPlayer
-{
-    NONE = 0,
-    STUNS = 10,
-    SMASHES = 30,
-    ENCAPSULATES = 40
-}
-
 public enum TouchEffectByPlayer
 {
     NONE = 0,

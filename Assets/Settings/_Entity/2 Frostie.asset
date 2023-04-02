@@ -17,11 +17,11 @@ MonoBehaviour:
   hp: 1
   priority: -3
   spawnsAimedAtPlayer: 1
-  movementSpeed: 15
+  movementSpeed: 6
   rotationToPlayer: 5
-  touchEffectToPlayer: 0
-  touchEffectToPlayer_EFC: {fileID: 0}
+  touchEffectToPlayer: {fileID: 0}
   touchEffectByPlayer: 20
   touchEffectToSibling: 20
   deathObject: {fileID: 3642440329064100580, guid: f40727ec54f11b84fa9fb1d76f756ac1, type: 3}
-  entityEffectOnDeath: {fileID: 0}
+  gooEntityEffect: {fileID: 0}
+  blastEntityEffect: {fileID: 11400000, guid: 91399a5ac44b1a142ad0001726464d74, type: 2}

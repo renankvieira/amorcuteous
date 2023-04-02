@@ -18,9 +18,8 @@ MonoBehaviour:
   priority: -5
   spawnsAimedAtPlayer: 1
   movementSpeed: 4
-  rotationToPlayer: 0.015
-  touchEffectToPlayer: {fileID: 11400000, guid: 8c483540aa716f845bbed792fe7b164c, type: 2}
-  touchEffectToPlayer_EEC: {fileID: 11400000, guid: 8c483540aa716f845bbed792fe7b164c, type: 2}
+  rotationToPlayer: 15
+  touchEffectToPlayer: {fileID: 0}
   touchEffectByPlayer: 20
   touchEffectToSibling: 20
   deathObject: {fileID: 3642440329064100580, guid: 1e6494f08a70af94ab86037ae554a949, type: 3}

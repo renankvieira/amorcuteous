@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01820a5014d54434e8be1838a53f1887, type: 3}
   m_Name: 003 FREEZE
   m_EditorClassIdentifier: 
-  effectName: stun
-  effectType: 20
-  duration: 0.5
+  effectName: freeze
+  effectType: 30
+  duration: 3
   power: 1
   replaceOnStack: 1
   animationTriggerOnActivation: stun
-  attachOnActivation: {fileID: 0}
+  attachOnActivation: {fileID: 6987809163545688316, guid: b2c2c3ef29be02b4390dbae8c2da205c, type: 3}
   createOnActivation: {fileID: 0}
   createOnDeactivation: {fileID: 0}
+  logUsage: 0
+  speedDecreaseMultiplier: 0
+  stunsPlayer: 0

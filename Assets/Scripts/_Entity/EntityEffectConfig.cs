@@ -31,5 +31,12 @@ public enum EntityEffectType
 {
     NONE = 0,
     SLOW = 10,
-    STUN = 20
+    STUN = 20,
+    FREEZE = 30,
+    SMASH = 40,
+    ENCAPSULATE = 50,
+
+    ETC_01 = 1001,
+    ETC_02 = 1002,
+    ETC_03 = 1003
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[SelectionBase]
 public class Entity : MonoBehaviour
 {
     [Header("Config")]
@@ -154,6 +155,7 @@ public class Entity : MonoBehaviour
         if (deathPrefab != null && killer != null)
         {
             EnemyDeathObject deathObject = Instantiate(deathPrefab, transform.position, killer.transform.rotation * Quaternion.AngleAxis(30f, Vector3.up));
+            deathObject.Initialize(entityConfig);
         }
     }
 
@@ -179,6 +181,10 @@ public class Entity : MonoBehaviour
                     Debug.LogFormat(this, "Removing EffectConfig: [{0}], [{1}]", effect.effectConfig.name, gameObject.name);
 
                 currentEffects.Remove(effect);
+
+                if (effect.effectAttachment != null)
+                    Destroy(effect.effectAttachment);
+
                 if (effect.effectConfig.createOnDeactivation != null)
                     Instantiate(effect.effectConfig.createOnDeactivation, transform.position, effect.effectConfig.createOnDeactivation.transform.rotation);
             }
@@ -215,7 +221,7 @@ public class Entity : MonoBehaviour
         currentEffects.Add(newEffect);
 
         if (config.attachOnActivation)
-            Instantiate(config.attachOnActivation, transform.position, transform.rotation, transform);
+            newEffect.effectAttachment = Instantiate(config.attachOnActivation, transform.position, transform.rotation, transform);
         if (config.createOnActivation)
             Instantiate(config.attachOnActivation, transform.position, config.createOnActivation.transform.rotation);
         if (config.animationTriggerOnActivation != "---")
@@ -253,7 +259,7 @@ public class Entity : MonoBehaviour
     public float GetSpeedMultiplier()
     {
         float speedMultiplier = 1f;
-        if (IsStunned())
+        if (IsStunned() || IsFrozen())
         {
             speedMultiplier = 0f;
         }
@@ -270,6 +276,11 @@ public class Entity : MonoBehaviour
     public bool IsStunned()
     {
         return HasEffectOfType(EntityEffectType.STUN);
+    }
+
+    public bool IsFrozen()
+    {
+        return HasEffectOfType(EntityEffectType.FREEZE);
     }
 }
 

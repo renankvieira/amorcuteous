@@ -7,4 +7,5 @@ public class EntityEffect
 {
     public EntityEffectConfig effectConfig;
     public float timeOfActivation;
+    public GameObject effectAttachment;
 }

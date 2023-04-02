@@ -18,6 +18,9 @@ MonoBehaviour:
   power: 0.5
   replaceOnStack: 1
   animationTriggerOnActivation: ---
-  attachOnActivation: {fileID: 0}
+  attachOnActivation: {fileID: 6987809163545688316, guid: f331598ee0e51704ca80c83bdddca270, type: 3}
   createOnActivation: {fileID: 0}
   createOnDeactivation: {fileID: 0}
+  logUsage: 0
+  speedDecreaseMultiplier: 0
+  stunsPlayer: 0

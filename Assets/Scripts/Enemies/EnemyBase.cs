@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    [Header("Control")]
-    public float speed = 5f;
-
+    [Header("References")]
     public Entity entity;
     public EntityConfig entityConfig => entity.entityConfig;
+
+    [Header("Control")]
+    [HideInInspector] public float speed = 5f;
 
     public void Initialize(Vector3 targetPosition)
     {
@@ -30,7 +31,7 @@ public class EnemyBase : MonoBehaviour
         if (GameManager.Instance.player != null)
         {
             Quaternion desiredRotation = Quaternion.LookRotation(GameManager.Instance.player.transform.position - transform.position, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, entityConfig.rotationToPlayer * Time.deltaTime * 1000f);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, entityConfig.rotationToPlayer * Time.deltaTime);
         }
 
         transform.Translate(Vector3.forward * speed * entity.GetSpeedMultiplier() * Time.deltaTime);

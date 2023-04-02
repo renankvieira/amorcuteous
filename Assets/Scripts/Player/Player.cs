@@ -40,13 +40,9 @@ public class Player : MonoBehaviour
         if (transform.position != mouseWorldPosition && !isAttacking && IsMouseOverGameWindow)
         {
             float finalSpeed = moveSpeed * entity.GetSpeedMultiplier();
-
-
-            bool isStunned = entity.IsStunned();
-
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
 
-            if (!isStunned)
+            if (!entity.IsStunned() && !entity.IsFrozen())
             {
                 if (mouseWorldPosition != transform.position)
                 {
