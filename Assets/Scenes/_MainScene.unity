@@ -638,14 +638,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_new 2
       objectReference: {fileID: 0}
-    - target: {fileID: 7675069679687525948, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
-      propertyPath: logEffects
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7675069679687525948, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
-      propertyPath: logContacts
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
 --- !u!1 &827291710
@@ -1382,14 +1374,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1179951482}
     m_Modifications:
-    - target: {fileID: -419951156684785133, guid: a9803f9affff617418668773e490b6fd, type: 3}
-      propertyPath: enemyPrefabs.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -419951156684785133, guid: a9803f9affff617418668773e490b6fd, type: 3}
-      propertyPath: enemyPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 1860727309720252644, guid: 9706e931bcc4553448c7231eb6791517, type: 3}
     - target: {fileID: 123333757105983525, guid: a9803f9affff617418668773e490b6fd, type: 3}
       propertyPath: m_Name
       value: SpawnManager

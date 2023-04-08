@@ -154,7 +154,7 @@ public class Entity : MonoBehaviour
 
         if (deathPrefab != null && killer != null)
         {
-            EnemyDeathObject deathObject = Instantiate(deathPrefab, transform.position, killer.transform.rotation * Quaternion.AngleAxis(30f, Vector3.up));
+            EnemyDeathObject deathObject = Instantiate(deathPrefab, transform.position, killer.transform.rotation * Quaternion.AngleAxis(0, Vector3.up));
             deathObject.Initialize(entityConfig);
         }
     }
@@ -178,7 +178,7 @@ public class Entity : MonoBehaviour
             if (effect.timeOfActivation + effect.effectConfig.duration <= Time.time)
             {
                 if (effect.effectConfig.logUsage || logEffects)
-                    Debug.LogFormat(this, "Removing EffectConfig: [{0}], [{1}]", effect.effectConfig.name, gameObject.name);
+                    Debug.LogFormat(this, "Effect off: [{0}], [{1}]", effect.effectConfig.name, gameObject.name);
 
                 currentEffects.Remove(effect);
 
@@ -197,7 +197,7 @@ public class Entity : MonoBehaviour
             return;
 
         if (config.logUsage || logEffects)
-            Debug.LogFormat(this, "Applying EffectConfig: [{0}], [{1}]", config.name, gameObject.name);
+            Debug.LogFormat(this, "Effect on: [{0}], [{1}]", config.name, gameObject.name);
 
         if (config.replaceOnStack)
         {
@@ -209,7 +209,7 @@ public class Entity : MonoBehaviour
                     effect.timeOfActivation = -1000f;
 
                     if (config.logUsage || logEffects)
-                        Debug.LogFormat(this, "ReplacingOnStack EffectConfig: [{0}], [{1}]", config.name, gameObject.name);
+                        Debug.LogFormat(this, "Effect replace: [{0}], [{1}]", config.name, gameObject.name);
                     //break;
                 }
             }

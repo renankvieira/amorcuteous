@@ -14,14 +14,20 @@ public class SpawnManager : SingletonOfType<SpawnManager>
 
     public float spawnFrequency = 3f;
     public EnemyBase[] enemyPrefabs;
-    //public EnemyBase enemyPrefab;
+    public bool useDebug;
+    public EnemyBase[] enemyPrefabsDebug;
     public Transform upperLeftBoundary;
     public Transform lowerRightBoundary;
+
+    public EnemyBase[] ChosenEnemyPrefabs => useDebug ? enemyPrefabsDebug : enemyPrefabs;
 
     private void Start()
     {
         if (!spawnerIsActive)
             Debug.LogWarning("[SM] Spawner is inactive.", this);
+
+        if (!useDebug)
+            Debug.LogWarning("[SM] Using debug enemies.", this);
 
         StartCoroutine(MaxEnemiesControlCoroutine());
         StartCoroutine(SpawnControlCoroutine());
@@ -57,7 +63,7 @@ public class SpawnManager : SingletonOfType<SpawnManager>
                 Vector3 spawnPosition = GetRandomBoundaryPosition(horizontalPosition, verticalPosition);
                 Vector3 targetPosition = GetRandomBoundaryPosition(horizontalPosition * -1, verticalPosition * -1);
 
-                EnemyBase newEnemy = Instantiate(enemyPrefabs.GetRandom(), spawnPosition, Quaternion.identity);
+                EnemyBase newEnemy = Instantiate(ChosenEnemyPrefabs.GetRandom(), spawnPosition, Quaternion.identity);
                 newEnemy.Initialize(targetPosition);
 
                 currentEnemyCount++;
