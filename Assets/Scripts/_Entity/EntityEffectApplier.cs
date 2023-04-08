@@ -13,7 +13,7 @@ public class EntityEffectApplier : MonoBehaviour
         if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
             if (entityEffectToApply != null)
-                other.GetComponent<Entity>().ApplyEffect(entityEffectToApply);
+                other.GetComponent<Entity>().ApplyEffect(entityEffectToApply, transform);
             if (destroyOnApply)
                 Destroy(gameObject);
         }

@@ -80,7 +80,7 @@ public class Entity : MonoBehaviour
         if (this.entityConfig.entityType == EntityType.PLAYER)
         {
             if (otherEntity.entityConfig.touchEffectToPlayer != null)
-                ApplyEffect(otherEntity.entityConfig.touchEffectToPlayer);
+                ApplyEffect(otherEntity.entityConfig.touchEffectToPlayer, otherEntity.transform);
         }
         else if (this.entityConfig.entityType == EntityType.ENEMY)
         {
@@ -191,7 +191,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void ApplyEffect(EntityEffectConfig config)
+    public void ApplyEffect(EntityEffectConfig config, Transform applier)
     {
         if (isDead)
             return;
@@ -219,6 +219,9 @@ public class Entity : MonoBehaviour
         newEffect.timeOfActivation = Time.time;
         newEffect.effectConfig = config;
         currentEffects.Add(newEffect);
+
+        if (config.damage > 0)
+            TakeDamage(config.damage, config.damageType, null);
 
         if (config.attachOnActivation)
             newEffect.effectAttachment = Instantiate(config.attachOnActivation, transform.position, transform.rotation, transform);
@@ -286,7 +289,8 @@ public class Entity : MonoBehaviour
 
 public enum DamageType
 {
-    PLAYER_SWORD = 0,
+    NOT_SET = 0,
+    PLAYER_SWORD = 1,
     ACID = 10,
     ICE = 20
 }

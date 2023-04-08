@@ -13,6 +13,11 @@ public class EntityEffectConfig : ScriptableObject
     public bool replaceOnStack = true;
     public string animationTriggerOnActivation = "---";
 
+    [Header("Config")]
+    public int damage = 0;
+    public DamageType damageType = DamageType.NOT_SET;
+
+
     [Header("Objects")]
     public GameObject attachOnActivation;
     public GameObject createOnActivation;
@@ -35,6 +40,7 @@ public enum EntityEffectType
     FREEZE = 30,
     SMASH = 40,
     ENCAPSULATE = 50,
+    MELTDOWN = 60,
 
     ETC_01 = 1001,
     ETC_02 = 1002,
