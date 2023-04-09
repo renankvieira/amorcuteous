@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     void Awake()
     {
         entity = GetComponent<Entity>();
+        entity.onDeath += OnDeath;
+
         GameManager.Instance.player = this;
     }
 
@@ -40,7 +42,7 @@ public class Player : MonoBehaviour
 
         bool isMoving = false;
 
-        if (transform.position != mouseWorldPosition && !isAttacking && IsMouseOverGameWindow)
+        if (transform.position != mouseWorldPosition && !isAttacking && IsMouseOverGameWindow && GameManager.Instance.roundIsOn)
         {
             float finalSpeed = moveSpeed * entity.GetSpeedMultiplier();
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
@@ -81,5 +83,11 @@ public class Player : MonoBehaviour
     {
         isAttacking = active;
         //Debug.Log("[P] Swing state: " + isAttacking, this);
+    }
+
+    void OnDeath()
+    {
+        print(1);
+        GameManager.Instance.FinishRound(false);
     }
 }

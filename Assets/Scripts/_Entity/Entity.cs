@@ -18,8 +18,6 @@ public class Entity : MonoBehaviour
     EnemyBase enemy;
     EnemyDeathObject deathPrefab;
     
-    List<EntityEffect> _cachedEffectList;
-
     [Header("Debug")]
     public bool logContacts = false;
     public bool logEffects = false;
@@ -76,6 +74,9 @@ public class Entity : MonoBehaviour
     {
         if (logContacts)
             Debug.Log("[E] Contact to Enemy: " + entityConfig.entityName + " x " + otherEntity.entityConfig.entityName, this);
+
+        if (IsFragile())
+            Die(otherEntity.transform);
 
         if (this.entityConfig.entityType == EntityType.PLAYER)
         {
@@ -157,6 +158,8 @@ public class Entity : MonoBehaviour
             EnemyDeathObject deathObject = Instantiate(deathPrefab, transform.position, killer.transform.rotation * Quaternion.AngleAxis(0, Vector3.up));
             deathObject.Initialize(entityConfig);
         }
+
+        onDeath.SafeInvoke();
     }
 
     public void Dismiss()
@@ -178,7 +181,7 @@ public class Entity : MonoBehaviour
             if (effect.timeOfActivation + effect.effectConfig.duration <= Time.time)
             {
                 if (effect.effectConfig.debug.logUsage || logEffects)
-                    Debug.LogFormat(this, "Effect off: [{0}], [{1}]", effect.effectConfig.name, gameObject.name);
+                    Debug.LogFormat(this, "[E] Effect off: [{0}], [{1}]", effect.effectConfig.name, gameObject.name);
 
                 currentEffects.Remove(effect);
 
@@ -197,7 +200,7 @@ public class Entity : MonoBehaviour
             return;
 
         if (config.debug.logUsage || logEffects)
-            Debug.LogFormat(this, "Effect on: [{0}], [{1}]", config.name, gameObject.name);
+            Debug.LogFormat(this, "[E] Effect on: [{0}], [{1}]", config.name, gameObject.name);
 
         if (config.persistence.renewsOnReapply)
         {
@@ -209,7 +212,7 @@ public class Entity : MonoBehaviour
                     effect.timeOfActivation = -1000f;
 
                     if (config.debug.logUsage || logEffects)
-                        Debug.LogFormat(this, "Effect replace: [{0}], [{1}]", config.name, gameObject.name);
+                        Debug.LogFormat(this, "[E] Effect replace: [{0}], [{1}]", config.name, gameObject.name);
                     //break;
                 }
             }
@@ -262,6 +265,13 @@ public class Entity : MonoBehaviour
         return false;
     }
 
+    public bool IsFragile()
+    {
+        foreach (EntityEffect effect in currentEffects)
+            if (effect.effectConfig.persistence.makesFragile)
+                return true;
+        return false;
+    }
 }
 
 public enum DamageType

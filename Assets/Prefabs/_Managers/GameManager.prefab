@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2178147213229800241}
   - component: {fileID: 1902727779513009731}
+  - component: {fileID: 5212634815248637249}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -44,12 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0967d812e66544c4ba6d80e5cce0a9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerIsActive: 0
-  currentEnemyCount: 0
-  currentMaxEnemies: 1
-  maxEnemiesIncreaseFrequency: 3
-  limitOfMaxEnemies: 10
-  spawnFrequency: 0.78
-  enemyPrefab: {fileID: 8866424560606525296, guid: b1ce9615837920f45985dc2f827e143e, type: 3}
-  upperLeftBoundary: {fileID: 0}
-  lowerRightBoundary: {fileID: 0}
+  roundIsOn: 1
+  roundWon: 0
+  player: {fileID: 0}
+--- !u!114 &5212634815248637249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8611714646687441365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116569d04b6714321b857e524582d49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

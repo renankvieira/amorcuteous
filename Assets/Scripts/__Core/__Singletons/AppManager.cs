@@ -11,7 +11,7 @@ using UnityEngine;
 public class AppManager : SingletonOfType<AppManager>
 {
     [Header("Config")]
-    //[Expandable] public GameConfig gameConfig;
+    [Expandable] public GameConfig gameConfig;
     [Expandable] public DebugConfig debugConfig;
 
     [Header("Control")]
