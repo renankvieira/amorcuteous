@@ -177,7 +177,7 @@ public class Entity : MonoBehaviour
             EntityEffect effect = currentEffects[i];
             if (effect.timeOfActivation + effect.effectConfig.duration <= Time.time)
             {
-                if (effect.effectConfig.logUsage || logEffects)
+                if (effect.effectConfig.debug.logUsage || logEffects)
                     Debug.LogFormat(this, "Effect off: [{0}], [{1}]", effect.effectConfig.name, gameObject.name);
 
                 currentEffects.Remove(effect);
@@ -185,8 +185,8 @@ public class Entity : MonoBehaviour
                 if (effect.effectAttachment != null)
                     Destroy(effect.effectAttachment);
 
-                if (effect.effectConfig.createOnDeactivation != null)
-                    Instantiate(effect.effectConfig.createOnDeactivation, transform.position, effect.effectConfig.createOnDeactivation.transform.rotation);
+                if (effect.effectConfig.visuals.createOnDeactivation != null)
+                    Instantiate(effect.effectConfig.visuals.createOnDeactivation, transform.position, effect.effectConfig.visuals.createOnDeactivation.transform.rotation);
             }
         }
     }
@@ -196,10 +196,10 @@ public class Entity : MonoBehaviour
         if (isDead)
             return;
 
-        if (config.logUsage || logEffects)
+        if (config.debug.logUsage || logEffects)
             Debug.LogFormat(this, "Effect on: [{0}], [{1}]", config.name, gameObject.name);
 
-        if (config.replaceOnStack)
+        if (config.persistence.renewsOnReapply)
         {
             foreach (EntityEffect effect in currentEffects)
             {
@@ -208,7 +208,7 @@ public class Entity : MonoBehaviour
                     //currentEffects.Remove(effect);
                     effect.timeOfActivation = -1000f;
 
-                    if (config.logUsage || logEffects)
+                    if (config.debug.logUsage || logEffects)
                         Debug.LogFormat(this, "Effect replace: [{0}], [{1}]", config.name, gameObject.name);
                     //break;
                 }
@@ -220,71 +220,48 @@ public class Entity : MonoBehaviour
         newEffect.effectConfig = config;
         currentEffects.Add(newEffect);
 
-        if (config.damage > 0)
-            TakeDamage(config.damage, config.damageType, null);
+        if (config.damage.damage > 0)
+            TakeDamage(config.damage.damage, config.damage.damageType, null);
 
-        if (config.attachOnActivation)
-            newEffect.effectAttachment = Instantiate(config.attachOnActivation, transform.position, transform.rotation, transform);
-        if (config.createOnActivation)
-            Instantiate(config.attachOnActivation, transform.position, config.createOnActivation.transform.rotation);
-        if (config.animationTriggerOnActivation != "---")
-            GetComponent<Animator>().SetTrigger(config.animationTriggerOnActivation);
+        if (config.visuals.attachOnActivation)
+            newEffect.effectAttachment = Instantiate(config.visuals.attachOnActivation, transform.position, transform.rotation, transform);
+        if (config.visuals.createOnActivation)
+            Instantiate(config.visuals.attachOnActivation, transform.position, config.visuals.createOnActivation.transform.rotation);
+        //if (config.animationTriggerOnActivation != "---")
+        //    GetComponent<Animator>().SetTrigger(config.animationTriggerOnActivation);
     }
-
-    public bool HasEffectOfType(EntityEffectType entityEffectType)
-    {
-        foreach (EntityEffect effect in currentEffects)
-            if (effect.effectConfig.effectType == entityEffectType)
-                return true;
-        return false;
-    }
-
-    public List<EntityEffect> GetEffectsByType(EntityEffectType entityEffectType)
-    {
-        if (_cachedEffectList == null)
-            _cachedEffectList = new List<EntityEffect>();
-        _cachedEffectList.Clear();
-
-        foreach (EntityEffect effect in currentEffects)
-            if (effect.effectConfig.effectType == entityEffectType)
-                _cachedEffectList.Add(effect);
-
-        return _cachedEffectList;
-    }
-
-
-
-
-
-    //TODO: Remove effects type. Instead, put on effect config itself: "multiplicative slow", "prevents movement".
-    // or "stuns"
 
     public float GetSpeedMultiplier()
     {
         float speedMultiplier = 1f;
-        if (IsStunned() || IsFrozen())
+
+        foreach (EntityEffect effect in currentEffects)
         {
-            speedMultiplier = 0f;
-        }
-        else if (HasEffectOfType(EntityEffectType.SLOW))
-        {
-            List<EntityEffect> _cachedEffects = GetEffectsByType(EntityEffectType.SLOW);
-            foreach (EntityEffect effect in _cachedEffects)
-                speedMultiplier *= effect.effectConfig.power;
+            if (effect.effectConfig.movement.preventsMovement)
+                return 0f;
+            else 
+                speedMultiplier *= effect.effectConfig.movement.movementSpeedMultiplier;
         }
 
         return speedMultiplier;
     }
 
-    public bool IsStunned()
+    public bool RotationIsPrevented()
     {
-        return HasEffectOfType(EntityEffectType.STUN);
+        foreach (EntityEffect effect in currentEffects)
+            if (effect.effectConfig.movement.preventsRotation)
+                return true;
+        return false;
     }
 
-    public bool IsFrozen()
+    public bool AttackIsPrevented()
     {
-        return HasEffectOfType(EntityEffectType.FREEZE);
+        foreach (EntityEffect effect in currentEffects)
+            if (effect.effectConfig.movement.preventsAttack)
+                return true;
+        return false;
     }
+
 }
 
 public enum DamageType
@@ -292,5 +269,6 @@ public enum DamageType
     NOT_SET = 0,
     PLAYER_SWORD = 1,
     ACID = 10,
-    ICE = 20
+    SHATTER = 20
 }
+

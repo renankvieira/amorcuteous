@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     [Header("Etc")]
     public Animator mainAnimator;
+    public Animator movementAnimator;
     public Collider weaponCollider;
     public bool isAttacking = false;
 
@@ -37,12 +38,16 @@ public class Player : MonoBehaviour
         if (plane.Raycast(ray, out float distance))
             mouseWorldPosition = ray.GetPoint(distance);
 
+        bool isMoving = false;
+
         if (transform.position != mouseWorldPosition && !isAttacking && IsMouseOverGameWindow)
         {
             float finalSpeed = moveSpeed * entity.GetSpeedMultiplier();
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
 
-            if (!entity.IsStunned() && !entity.IsFrozen())
+            isMoving = finalSpeed > 0f;
+
+            if (!entity.RotationIsPrevented())
             {
                 if (mouseWorldPosition != transform.position)
                 {
@@ -53,17 +58,16 @@ public class Player : MonoBehaviour
                 //transform.LookAt(mouseWorldPosition);
             }
         }
+
+        movementAnimator.SetBool("isMoving", isMoving);
     }
 
     void AttackControl()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
-            if (!isAttacking && !entity.HasEffectOfType(EntityEffectType.STUN))
-            {
+            if (!isAttacking && !entity.AttackIsPrevented())
                 mainAnimator.SetTrigger("attack");
-            }
         }
         weaponCollider.enabled = isAttacking;
     }

@@ -55,7 +55,7 @@ MonoBehaviour:
   - {fileID: 1860727309720252644, guid: b1ce9615837920f45985dc2f827e143e, type: 3}
   - {fileID: 1860727309720252644, guid: 9e5916b2873a4984a92eb201263faf46, type: 3}
   - {fileID: 1860727309720252644, guid: 9706e931bcc4553448c7231eb6791517, type: 3}
-  useDebug: 1
+  useDebug: 0
   enemyPrefabsDebug:
   - {fileID: 1860727309720252644, guid: 9e5916b2873a4984a92eb201263faf46, type: 3}
   upperLeftBoundary: {fileID: 6643846238590570591}

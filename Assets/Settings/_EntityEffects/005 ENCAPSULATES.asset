@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: 005 ENCAPSULATES
   m_EditorClassIdentifier: 
   effectName: encapsulate
-  effectType: 50
   duration: 0.5
-  power: 1
-  replaceOnStack: 1
-  animationTriggerOnActivation: stun
-  attachOnActivation: {fileID: 0}
-  createOnActivation: {fileID: 0}
-  createOnDeactivation: {fileID: 0}
-  logUsage: 0
-  speedDecreaseMultiplier: 0
-  stunsPlayer: 0
+  damage:
+    damage: 0
+    damageType: 0
+  movement:
+    preventsMovement: 0
+    preventsRotation: 0
+    preventsAttack: 0
+    movementSpeedMultiplier: 1
+  persistence:
+    renewsOnReapply: 1
+    makesFragile: 0
+  visuals:
+    attachOnActivation: {fileID: 0}
+    createOnActivation: {fileID: 0}
+    createOnDeactivation: {fileID: 0}
+  debug:
+    logUsage: 0

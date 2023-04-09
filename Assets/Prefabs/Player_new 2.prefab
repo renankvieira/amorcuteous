@@ -10169,6 +10169,7 @@ MonoBehaviour:
   moveSpeed: 5
   mouseWorldPosition: {x: 0, y: 0, z: 0}
   mainAnimator: {fileID: 8624048601141732449}
+  movementAnimator: {fileID: 6232671288870861699}
   weaponCollider: {fileID: 8624048600897097578}
   isAttacking: 0
   entity: {fileID: 0}
@@ -16263,6 +16264,11 @@ PrefabInstance:
 --- !u!4 &6232671288117387704 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6232671287991161046, guid: eddda34bed9f8b8468c00b4fdb8260ce, type: 3}
+  m_PrefabInstance: {fileID: 410923374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6232671288870861699 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6232671288462297837, guid: eddda34bed9f8b8468c00b4fdb8260ce, type: 3}
   m_PrefabInstance: {fileID: 410923374}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2079752847

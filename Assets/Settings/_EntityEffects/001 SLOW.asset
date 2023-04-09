@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: 001 SLOW
   m_EditorClassIdentifier: 
   effectName: slow
-  effectType: 10
   duration: 3
-  power: 0.5
-  replaceOnStack: 1
-  animationTriggerOnActivation: ---
-  attachOnActivation: {fileID: 6987809163545688316, guid: f331598ee0e51704ca80c83bdddca270, type: 3}
-  createOnActivation: {fileID: 0}
-  createOnDeactivation: {fileID: 0}
-  logUsage: 0
-  speedDecreaseMultiplier: 0
-  stunsPlayer: 0
+  damage:
+    damage: 0
+    damageType: 0
+  movement:
+    preventsMovement: 0
+    preventsRotation: 0
+    preventsAttack: 0
+    movementSpeedMultiplier: 0.5
+  persistence:
+    renewsOnReapply: 1
+    makesFragile: 0
+  visuals:
+    attachOnActivation: {fileID: 0}
+    createOnActivation: {fileID: 0}
+    createOnDeactivation: {fileID: 0}
+  debug:
+    logUsage: 0

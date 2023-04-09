@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: 003 FREEZE
   m_EditorClassIdentifier: 
   effectName: freeze
-  effectType: 30
-  duration: 3
-  power: 1
-  replaceOnStack: 1
-  animationTriggerOnActivation: stun
-  attachOnActivation: {fileID: 6987809163545688316, guid: b2c2c3ef29be02b4390dbae8c2da205c, type: 3}
-  createOnActivation: {fileID: 0}
-  createOnDeactivation: {fileID: 0}
-  logUsage: 0
-  speedDecreaseMultiplier: 0
-  stunsPlayer: 0
+  duration: 1
+  damage:
+    damage: 0
+    damageType: 20
+  movement:
+    preventsMovement: 1
+    preventsRotation: 1
+    preventsAttack: 1
+    movementSpeedMultiplier: 1
+  persistence:
+    renewsOnReapply: 1
+    makesFragile: 0
+  visuals:
+    attachOnActivation: {fileID: 0}
+    createOnActivation: {fileID: 0}
+    createOnDeactivation: {fileID: 0}
+  debug:
+    logUsage: 0

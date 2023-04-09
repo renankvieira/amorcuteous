@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: 002 STUN
   m_EditorClassIdentifier: 
   effectName: stun
-  effectType: 20
   duration: 0.5
-  power: 1
-  replaceOnStack: 1
-  animationTriggerOnActivation: stun
-  attachOnActivation: {fileID: 6987809163545688316, guid: 24801aa43873735429fe7fdb4ce70d35, type: 3}
-  createOnActivation: {fileID: 0}
-  createOnDeactivation: {fileID: 0}
-  logUsage: 0
-  speedDecreaseMultiplier: 0
-  stunsPlayer: 0
+  damage:
+    damage: 0
+    damageType: 0
+  movement:
+    preventsMovement: 1
+    preventsRotation: 1
+    preventsAttack: 1
+    movementSpeedMultiplier: 1
+  persistence:
+    renewsOnReapply: 1
+    makesFragile: 0
+  visuals:
+    attachOnActivation: {fileID: 0}
+    createOnActivation: {fileID: 0}
+    createOnDeactivation: {fileID: 0}
+  debug:
+    logUsage: 0
