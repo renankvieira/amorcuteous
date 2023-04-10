@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 003 FREEZE
   m_EditorClassIdentifier: 
   effectName: freeze
-  duration: 10.45
+  duration: 2
   damage:
     damage: 0
     damageType: 20
@@ -26,7 +26,7 @@ MonoBehaviour:
     renewsOnReapply: 0
     makesFragile: 1
   visuals:
-    attachOnActivation: {fileID: 0}
+    attachOnActivation: {fileID: 6987809163545688316, guid: b2c2c3ef29be02b4390dbae8c2da205c, type: 3}
     createOnActivation: {fileID: 0}
     createOnDeactivation: {fileID: 0}
   debug:

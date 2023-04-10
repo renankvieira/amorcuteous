@@ -26,7 +26,7 @@ MonoBehaviour:
     renewsOnReapply: 1
     makesFragile: 0
   visuals:
-    attachOnActivation: {fileID: 0}
+    attachOnActivation: {fileID: 6987809163545688316, guid: 24801aa43873735429fe7fdb4ce70d35, type: 3}
     createOnActivation: {fileID: 0}
     createOnDeactivation: {fileID: 0}
   debug:

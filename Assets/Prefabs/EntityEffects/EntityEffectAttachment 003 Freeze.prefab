@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7587935788434357091, guid: 905948fd6a3fb044dabda2db4ab876a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 420b99919db8d4e49ab62697a33585ff, type: 2}
     - target: {fileID: 8875731833251178513, guid: 905948fd6a3fb044dabda2db4ab876a3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8935727940585410516, guid: 905948fd6a3fb044dabda2db4ab876a3, type: 3}
       propertyPath: m_Name
-      value: EntityEffectAttachment  Base
+      value: EntityEffectAttachment 003 Freeze
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 905948fd6a3fb044dabda2db4ab876a3, type: 3}
