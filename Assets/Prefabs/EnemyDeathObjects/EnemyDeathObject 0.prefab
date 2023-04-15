@@ -7,9 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3154011627239039488, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154011627239039488, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154011627239039488, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7007869772344754983, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
       propertyPath: m_Name
-      value: EnemyDeathObject  Base
+      value: EnemyDeathObject 0
       objectReference: {fileID: 0}
     - target: {fileID: 7975787091861805477, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
       propertyPath: m_RootOrder

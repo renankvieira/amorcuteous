@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
+  m_Name: 3 Meltie
+  m_EditorClassIdentifier: 
+  entityType: 10
+  entityName: Meltie
+  hp: 1
+  priority: -10
+  spawnsAimedAtPlayer: 1
+  movementSpeed: 6
+  rotationToPlayer: 5
+  touchEffectToPlayer: {fileID: 0}
+  touchEffectByPlayer: 20
+  touchEffectToSibling: 20
+  deathObject: {fileID: 3642440329064100580, guid: eec47022455a76940a4f437b027b90a2, type: 3}
+  gooEntityEffect: {fileID: 11400000, guid: ae3f75c9f3362054cad5439cca3524b1, type: 2}
+  blastEntityEffect: {fileID: 0}

@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     [Header("Etc")]
     public Animator mainAnimator;
+    public Animator movementAnimator;
     public Collider weaponCollider;
     public bool isAttacking = false;
 
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     void Awake()
     {
         entity = GetComponent<Entity>();
+        entity.onDeath += OnDeath;
+
         GameManager.Instance.player = this;
     }
 
@@ -37,26 +40,16 @@ public class Player : MonoBehaviour
         if (plane.Raycast(ray, out float distance))
             mouseWorldPosition = ray.GetPoint(distance);
 
-        if (transform.position != mouseWorldPosition && !isAttacking && IsMouseOverGameWindow)
+        bool isMoving = false;
+
+        if (transform.position != mouseWorldPosition && !isAttacking && IsMouseOverGameWindow && GameManager.Instance.roundIsOn)
         {
-            bool isStunned = entity.HasEffectOfType(EntityEffectType.STUN);
-            bool isSlowed = entity.HasEffectOfType(EntityEffectType.SLOW);
-
-            float finalSpeed = moveSpeed;
-            if (isStunned)
-            {
-                finalSpeed = 0f;
-            }
-            else if (isSlowed)
-            {
-                List<EntityEffect> _cachedEffects = entity.GetEffectsByType(EntityEffectType.SLOW);
-                foreach (EntityEffect effect in _cachedEffects)
-                    finalSpeed *= effect.effectConfig.power;
-            }
-
+            float finalSpeed = moveSpeed * entity.GetSpeedMultiplier();
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
 
-            if (!isStunned)
+            isMoving = finalSpeed > 0f;
+
+            if (!entity.RotationIsPrevented())
             {
                 if (mouseWorldPosition != transform.position)
                 {
@@ -67,17 +60,16 @@ public class Player : MonoBehaviour
                 //transform.LookAt(mouseWorldPosition);
             }
         }
+
+        movementAnimator.SetBool("isMoving", isMoving);
     }
 
     void AttackControl()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
-            if (!isAttacking && !entity.HasEffectOfType(EntityEffectType.STUN))
-            {
+            if (!isAttacking && !entity.AttackIsPrevented())
                 mainAnimator.SetTrigger("attack");
-            }
         }
         weaponCollider.enabled = isAttacking;
     }
@@ -90,5 +82,12 @@ public class Player : MonoBehaviour
     public void ToggleSwingingState (bool active)
     {
         isAttacking = active;
+        //Debug.Log("[P] Swing state: " + isAttacking, this);
+    }
+
+    void OnDeath()
+    {
+        print(1);
+        GameManager.Instance.FinishRound(false);
     }
 }

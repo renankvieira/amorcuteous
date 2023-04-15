@@ -15,8 +15,7 @@ public class GameEvents : SingletonOfType<GameEvents>
         }
     }
 
-    public Action<int> gainMoney;
-    public Action<int> onMoneyGained;
-    public Action<int> onMoneyOwnedChange;
-
+    /// <summary>
+    /// Game Won
+    /// </summary>
 }

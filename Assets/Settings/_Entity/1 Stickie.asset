@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
+  m_Name: 1 Stickie
+  m_EditorClassIdentifier: 
+  entityType: 10
+  entityName: Stickie
+  hp: 1
+  priority: -5
+  spawnsAimedAtPlayer: 1
+  movementSpeed: 4
+  rotationToPlayer: 15
+  touchEffectToPlayer: {fileID: 0}
+  touchEffectByPlayer: 20
+  touchEffectToSibling: 20
+  deathObject: {fileID: 3642440329064100580, guid: 1e6494f08a70af94ab86037ae554a949, type: 3}
+  gooEntityEffect: {fileID: 11400000, guid: bc6fda1de52ee194990af48d872bcd98, type: 2}
+  blastEntityEffect: {fileID: 0}

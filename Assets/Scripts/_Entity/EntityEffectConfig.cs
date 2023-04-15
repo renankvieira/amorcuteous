@@ -5,26 +5,45 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "EntityEffectConfig_000", menuName = "General/New Entity Effect Config")]
 public class EntityEffectConfig : ScriptableObject
 {
-    [Header("Config")]
+    [Header("Main")]
     public string effectName = "---";
-    public EntityEffectType effectType = EntityEffectType.NONE;
     public float duration = 3f;
-    public float power = 0.5f;
-    public bool replaceOnStack = true;
-    public string animationTriggerOnActivation = "---";
 
-    [Header("Objects")]
-    public GameObject attachOnActivation;
-    public GameObject createOnActivation;
-    public GameObject createOnDeactivation;
+    public Damage damage;
+    public Movement movement;
+    public Persistence persistence;
+    public Visuals visuals;
+    public Debug debug;
 
-    [Header("Debug")]
-    public bool logUsage = false;
-}
+    [System.Serializable] public class Damage
+    {
+        public int damage = 0;
+        public DamageType damageType = DamageType.NOT_SET;
+    }
 
-public enum EntityEffectType
-{
-    NONE = 0,
-    SLOW = 10,
-    STUN = 20
+    [System.Serializable] public class Movement
+    {
+        public bool preventsMovement = false;
+        public bool preventsRotation = false;
+        public bool preventsAttack = false;
+        public float movementSpeedMultiplier = 1f;
+    }
+
+    [System.Serializable] public class Persistence
+    {
+        public bool renewsOnReapply = true;
+        public bool makesFragile = false;
+    }
+
+    [System.Serializable] public class Visuals
+    {
+        public GameObject attachOnActivation;
+        public GameObject createOnActivation;
+        public GameObject createOnDeactivation;
+    }
+
+    [System.Serializable] public class Debug
+    {
+        public bool logUsage = false;
+    }
 }

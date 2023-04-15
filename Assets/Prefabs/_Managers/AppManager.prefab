@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5779365852229777338}
+  - component: {fileID: 1879288765956737496}
+  - component: {fileID: 2090552906050815775}
   m_Layer: 0
   m_Name: AppManager
   m_TagString: Untagged
@@ -31,3 +33,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1879288765956737496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178652845380477513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89ac203534903b45b43dea52c868058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameConfig: {fileID: 0}
+  debugConfig: {fileID: 0}
+  appSession:
+    sessionID: 0
+  playerProfile:
+    app_Version: 999
+    save_GUID: '#notSet'
+    player_GUID: '#notSet'
+    languageChoice: 42
+    options_globalVolume: 0.7
+    options_isGameMuted: 0
+    tutorialComplete: -1
+    moneyOwned: 0
+    starsOwned: 0
+    starsOnBounsChest: 0
+    hasRedeemedFreeStarChest: 0
+    levelIndex: 0
+    maxLevelBeaten: -1
+  startingGravity: {x: 0, y: 0, z: 0}
+--- !u!114 &2090552906050815775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4178652845380477513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49f71aa35b044073a2dd2e8c2ac9309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

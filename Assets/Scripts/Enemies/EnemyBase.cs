@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    [Header("Config")]
-    [Expandable] public EnemyConfig enemyConfig;
+    [Header("References")]
+    public Entity entity;
+    public EntityConfig entityConfig => entity.entityConfig;
 
     [Header("Control")]
-    public Vector3 direction = Vector3.forward;
-    public float speed = 5f;
-
-    public Entity entity;
+    [HideInInspector] public float speed = 5f;
 
     public void Initialize(Vector3 targetPosition)
     {
+        Vector3 direction;
         direction = targetPosition - transform.position;
         direction.y = 0f;
         direction = direction.normalized;
@@ -24,7 +23,7 @@ public class EnemyBase : MonoBehaviour
 
     private void Start()
     {
-        speed = enemyConfig.movementSpeed;
+        speed = entityConfig.movementSpeed;
     }
 
     private void Update()
@@ -32,25 +31,31 @@ public class EnemyBase : MonoBehaviour
         if (GameManager.Instance.player != null)
         {
             Quaternion desiredRotation = Quaternion.LookRotation(GameManager.Instance.player.transform.position - transform.position, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, enemyConfig.rotationToPlayer * Time.deltaTime * 1000f);
-
-
-
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, entityConfig.rotationToPlayer * Time.deltaTime);
         }
 
-        //transform.position = Vector3.MoveTowards(transform.position, transform.position + (direction * speed), speed * Time.deltaTime);
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * entity.GetSpeedMultiplier() * Time.deltaTime);
     }
 
     public void OnContactWithPlayerBody(PlayerBodyCollider body)
     {
-        direction = transform.position - body.transform.position;
+        //Vector3 direction;
+        //direction = transform.position - body.transform.position;
+        //direction = direction.normalized;
+        //transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+
+        //if (entityConfig.touchEffectToPlayer_EFC != null)
+        //    body.player.entity.ApplyEffect(entityConfig.touchEffectToPlayer_EFC);
+    }
+
+    public void ReverseOnContact(Transform other)
+    {
+        Vector3 direction;
+        direction = transform.position - other.position;
         direction = direction.normalized;
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
-
-        if (enemyConfig.touchEffectToPlayer_EFC != null)
-            body.player.entity.ApplyEffect(enemyConfig.touchEffectToPlayer_EFC);
     }
+
 }
 
 

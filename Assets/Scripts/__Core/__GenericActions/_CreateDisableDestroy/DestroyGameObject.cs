@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DestroyGameObject : GenericActionCaller
 {
-    public bool destroySelf = false;
-    public GameObject gameObjectToDestroy;
+    public bool targetSelf = false;
+    public GameObject targetGameObject;
 
     public override void MethodToCall()
     {
@@ -15,9 +15,8 @@ public class DestroyGameObject : GenericActionCaller
 
     public void DestroyObject()
     {
-        if (destroySelf)
-            Destroy(gameObject);
-        else
-            Destroy(gameObjectToDestroy);
+        if (targetSelf)
+            targetGameObject = gameObject;
+        Destroy(targetGameObject);
     }
 }
