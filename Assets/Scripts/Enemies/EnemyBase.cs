@@ -13,10 +13,15 @@ public class EnemyBase : MonoBehaviour
 
     public void Initialize(Vector3 targetPosition)
     {
+        if (entityConfig.spawnsAimedAtPlayer && GameManager.Instance.player != null)
+            targetPosition = GameManager.Instance.player.transform.position;
+
         Vector3 direction;
         direction = targetPosition - transform.position;
         direction.y = 0f;
         direction = direction.normalized;
+
+
 
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
