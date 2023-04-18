@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : SingletonOfType<GameManager>
 {
     [Header("Control")]
+    public LevelConfig currentLevel;
     public bool roundIsOn = true;
     public bool roundWon = false;
     public Player player;
