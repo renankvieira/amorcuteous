@@ -6,13 +6,21 @@ public class GameManager : SingletonOfType<GameManager>
 {
     [Header("Control")]
     public LevelConfig currentLevel;
+    public float timeOnRound = 0;
     public bool roundIsOn = true;
     public bool roundWon = false;
     public Player player;
 
+    public float NormalizedTimeOnRound=> timeOnRound / currentLevel.spawnProgressionLength;
+
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    private void Update()
+    {
+        timeOnRound += Time.deltaTime;
     }
 
     public void FinishRound(bool roundWon)

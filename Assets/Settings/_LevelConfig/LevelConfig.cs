@@ -6,4 +6,5 @@ using UnityEngine;
 public class LevelConfig : ScriptableObject
 {
     public AnimationClip spawnProgression;
+    public float spawnProgressionLength = 120f;
 }

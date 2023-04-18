@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 239b9f9676b75c64da3569e9a10f2dba, type: 3}
   m_Name: LevelConfig 2
   m_EditorClassIdentifier: 
-  spawnProgression: {fileID: 0}
+  spawnProgression: {fileID: 7400000, guid: f647d957be05bf0458fa4e11480d8db9, type: 2}
+  spawnProgressionLength: 120
