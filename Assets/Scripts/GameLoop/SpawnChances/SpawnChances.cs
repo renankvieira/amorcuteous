@@ -22,11 +22,16 @@ public class SpawnChances : SingletonOfType<SpawnChances>
 
     AnimationClip anim;
 
+    private void Start()
+    {
+        GetComponent<Animator>().speed = 1 / GameManager.Instance.currentLevel.spawnProgressionLength;
+    }
+
     public EnemyBase GetSpawnedEnemy(float roundNormalizedTime)
     {
-        anim = GameManager.Instance.currentLevel.spawnProgression;
+        //anim = GameManager.Instance.currentLevel.spawnProgression;
 
-        anim.SampleAnimation(gameObject, roundNormalizedTime);
+        //anim.SampleAnimation(gameObject, roundNormalizedTime);
 
         float chancesSum = 0 + e0 + e1 + e2 + e3 + e4 + e5;
         float randomNumber = Random.Range(0f, chancesSum);

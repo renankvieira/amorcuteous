@@ -50,6 +50,7 @@ MonoBehaviour:
   roundIsOn: 1
   roundWon: 0
   player: {fileID: 0}
+  killCount: 100
 --- !u!114 &5212634815248637249
 MonoBehaviour:
   m_ObjectHideFlags: 0

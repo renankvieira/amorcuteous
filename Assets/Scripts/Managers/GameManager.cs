@@ -10,6 +10,7 @@ public class GameManager : SingletonOfType<GameManager>
     public bool roundIsOn = true;
     public bool roundWon = false;
     public Player player;
+    public int killCount = 100;
 
     public float NormalizedTimeOnRound=> timeOnRound / currentLevel.spawnProgressionLength;
 
@@ -21,6 +22,15 @@ public class GameManager : SingletonOfType<GameManager>
     private void Update()
     {
         timeOnRound += Time.deltaTime;
+    }
+
+    public void OnEnemyDeath()
+    {
+        if (!roundIsOn)
+            return;
+
+        killCount--;
+        RoundEvents.Instance.onKillCountChange.SafeInvoke(killCount);
     }
 
     public void FinishRound(bool roundWon)
