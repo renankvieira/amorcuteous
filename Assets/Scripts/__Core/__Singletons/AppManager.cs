@@ -36,6 +36,7 @@ public class AppManager : SingletonOfType<AppManager>
 
     void InitializeApp()
     {
+        UnityEngine.Rendering.DebugManager.instance.enableRuntimeUI = false;
         Application.targetFrameRate = 60;
         appSession = new AppSession();
         appSession.Initialize();
