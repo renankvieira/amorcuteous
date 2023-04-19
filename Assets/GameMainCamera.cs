@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GameMainCamera : MonoBehaviour
 {
-    Transform playerTransform;
-
-    Vector3 initialDistance;
-
+    [Header("Config")]
     public Vector3 minPosition;
     public Vector3 maxPosition;
+    public bool useSmoothDamp = false;
+    [Range(0f,1f)] public float smoothDampFactor = 0.5f;
+
+    [Header("Control")]
+    Transform playerTransform;
+    Vector3 initialDistance;
 
     void Start()
     {
@@ -24,8 +27,15 @@ public class GameMainCamera : MonoBehaviour
             Vector3 desiredPosition = playerTransform.position - initialDistance;
             desiredPosition = desiredPosition.Clamp(minPosition, maxPosition);
 
-            transform.position = desiredPosition;
-            //SmoothDamp
+            if (useSmoothDamp)
+            {
+                Vector3 outV3 = Vector3.zero;
+                transform.position = Vector3.SmoothDamp(transform.position, desiredPosition, ref outV3, smoothDampFactor);
+            }
+            else
+            {
+                transform.position = desiredPosition;
+            }
         }
     }
 }
