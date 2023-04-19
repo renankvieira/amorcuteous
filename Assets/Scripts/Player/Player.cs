@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 5f;
+    public float minDistanceToMove = 0.25f;
     public Vector3 mouseWorldPosition;
 
     bool IsMouseOverGameWindow { get { return !(0 > Input.mousePosition.x || 0 > Input.mousePosition.y || Screen.width < Input.mousePosition.x || Screen.height < Input.mousePosition.y); } }
@@ -42,7 +43,10 @@ public class Player : MonoBehaviour
 
         bool isMoving = false;
 
-        if (transform.position != mouseWorldPosition && !isAttacking && IsMouseOverGameWindow && GameManager.Instance.roundIsOn)
+        //bool isFarEnoughFromMouse = transform.position != mouseWorldPosition;
+        bool isFarEnoughFromMouse = Vector3.Distance(transform.position, mouseWorldPosition) >= minDistanceToMove;
+
+        if (isFarEnoughFromMouse && !isAttacking && IsMouseOverGameWindow && GameManager.Instance.roundIsOn)
         {
             float finalSpeed = moveSpeed * entity.GetSpeedMultiplier();
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
