@@ -19,6 +19,7 @@ public class Entity : MonoBehaviour
     EnemyDeathObject deathPrefab;
     
     [Header("Debug")]
+    public bool immortal = false;
     public bool logContacts = false;
     public bool logEffects = false;
 
@@ -135,7 +136,7 @@ public class Entity : MonoBehaviour
 
         hp -= damage;
 
-        if (hp <= 0)
+        if (hp <= 0 && !immortal)
         {
             if (damageType == DamageType.PLAYER_SWORD)
                 Die(damageDealerTransform.transform);
@@ -151,7 +152,12 @@ public class Entity : MonoBehaviour
         isDead = true;
 
         Destroy(gameObject);
-        SpawnManager.Instance.currentEnemyCount--;
+
+        if (entityConfig.entityType == EntityType.ENEMY)
+        {
+            GameManager.Instance.OnEnemyDeath();
+            SpawnManager.Instance.currentEnemyCount--;
+        }
 
         if (deathPrefab != null && killer != null)
         {

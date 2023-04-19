@@ -45,9 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0967d812e66544c4ba6d80e5cce0a9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: {fileID: 11400000, guid: 1a721b4b883ebc746a891d4b5520e7d5, type: 2}
+  timeOnRound: 0
   roundIsOn: 1
   roundWon: 0
   player: {fileID: 0}
+  killCount: 100
 --- !u!114 &5212634815248637249
 MonoBehaviour:
   m_ObjectHideFlags: 0

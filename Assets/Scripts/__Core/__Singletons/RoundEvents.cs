@@ -6,6 +6,8 @@ using System;
 public class RoundEvents : SingletonOfType<RoundEvents>
 {
 
+    public Action<int> onKillCountChange;
+
     public Action<bool> onRoundOver;
 
 

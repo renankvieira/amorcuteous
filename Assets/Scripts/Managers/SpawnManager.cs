@@ -19,7 +19,7 @@ public class SpawnManager : SingletonOfType<SpawnManager>
     public Transform upperLeftBoundary;
     public Transform lowerRightBoundary;
 
-    public EnemyBase[] ChosenEnemyPrefabs => useDebug ? enemyPrefabsDebug : enemyPrefabs;
+    //public EnemyBase[] ChosenEnemyPrefabs => useDebug ? enemyPrefabsDebug : enemyPrefabs;
 
     private void Start()
     {
@@ -63,7 +63,9 @@ public class SpawnManager : SingletonOfType<SpawnManager>
                 Vector3 spawnPosition = GetRandomBoundaryPosition(horizontalPosition, verticalPosition);
                 Vector3 targetPosition = GetRandomBoundaryPosition(horizontalPosition * -1, verticalPosition * -1);
 
-                EnemyBase newEnemy = Instantiate(ChosenEnemyPrefabs.GetRandom(), spawnPosition, Quaternion.identity);
+                EnemyBase chosenEnemy = SpawnChances.Instance.GetSpawnedEnemy(GameManager.Instance.NormalizedTimeOnRound);
+
+                EnemyBase newEnemy = Instantiate(chosenEnemy, spawnPosition, Quaternion.identity);
                 newEnemy.Initialize(targetPosition);
 
                 currentEnemyCount++;
