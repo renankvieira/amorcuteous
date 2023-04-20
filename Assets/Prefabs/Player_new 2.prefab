@@ -10166,12 +10166,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54222e104362154ba0a449f9cfbfb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveByKeyboard: 1
   mouseWorldPosition: {x: 0, y: 0, z: 0}
+  moveSpeed: 5
+  minDistanceToMove: 0.25
+  attackTowardsMouse: 1
+  rotateToMouseImmediately: 1
+  rotateToMouseSmoothly: 0
+  smoothSpeed: 1080
+  rotationDuration: 0.2
+  swordTrail: {fileID: 1064124623}
+  isAttacking: 0
   mainAnimator: {fileID: 8624048601141732449}
   movementAnimator: {fileID: 6232671288870861699}
   weaponCollider: {fileID: 8624048600897097578}
-  isAttacking: 0
   entity: {fileID: 0}
 --- !u!114 &7675069679687525948
 MonoBehaviour:
@@ -10189,6 +10197,7 @@ MonoBehaviour:
   hp: 1
   isDead: 0
   currentEffects: []
+  immortal: 0
   logContacts: 0
   logEffects: 0
 --- !u!114 &306050598
