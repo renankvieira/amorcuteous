@@ -4,18 +4,31 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Input")]
+    public bool moveByKeyboard = true;
+
+    Vector3 mouseWorldPosition = Vector3.right;
+    bool IsMouseOverGameWindow { get { return !(0 > Input.mousePosition.x || 0 > Input.mousePosition.y || Screen.width < Input.mousePosition.x || Screen.height < Input.mousePosition.y); } }
+
     [Header("Movement")]
     public float moveSpeed = 5f;
     public float minDistanceToMove = 0.25f;
-    public Vector3 mouseWorldPosition;
+    public float movementRotationSpeed = 1080f;
 
-    bool IsMouseOverGameWindow { get { return !(0 > Input.mousePosition.x || 0 > Input.mousePosition.y || Screen.width < Input.mousePosition.x || Screen.height < Input.mousePosition.y); } }
+    [Header("Attack")]
+    public bool attackTowardsMouse = true;
+    public bool rotateToMouseImmediately = false;
+    public bool rotateToMouseSmoothly = true;
+    public float smoothSpeed = 1080f;
+    public float rotationDuration = 0.2f;
+    public TrailRenderer swordTrail;
+    [ReadOnly] public bool isAttacking = false;
 
     [Header("Etc")]
+    public bool alwaysLookTowardsMouse = false;
     public Animator mainAnimator;
     public Animator movementAnimator;
     public Collider weaponCollider;
-    public bool isAttacking = false;
 
     Plane plane = new Plane(Vector3.up, 0);
 
@@ -31,15 +44,34 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        MovementControl();
+        UpdateMousePosition();
+
+        MovementControlMouse();
+        MovementControlWasd();
         AttackControl();
     }
 
-    void MovementControl()
+    void UpdateMousePosition()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (plane.Raycast(ray, out float distance))
             mouseWorldPosition = ray.GetPoint(distance);
+
+        if (alwaysLookTowardsMouse)
+        {
+            if (!isAttacking && !entity.RotationIsPrevented())
+            {
+                Quaternion desiredRotation = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector2.up);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, movementRotationSpeed * Time.deltaTime);
+            }
+        }
+
+    }
+
+    void MovementControlMouse()
+    {
+        if (moveByKeyboard)
+            return;
 
         bool isMoving = false;
 
@@ -58,7 +90,7 @@ public class Player : MonoBehaviour
                 if (mouseWorldPosition != transform.position)
                 {
                     Quaternion desiredRotation = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector2.up);
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, 1080f * Time.deltaTime);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, movementRotationSpeed * Time.deltaTime);
                 }
 
                 //transform.LookAt(mouseWorldPosition);
@@ -68,15 +100,86 @@ public class Player : MonoBehaviour
         movementAnimator.SetBool("isMoving", isMoving);
     }
 
+    void MovementControlWasd()
+    {
+        if (!moveByKeyboard)
+            return;
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out float distance))
+            mouseWorldPosition = ray.GetPoint(distance);
+
+        Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
+        bool isMoving = false;
+
+        if (!isAttacking && GameManager.Instance.roundIsOn)
+        {
+            float finalSpeed = moveSpeed * entity.GetSpeedMultiplier();
+            transform.position += input * finalSpeed * Time.deltaTime;
+
+            isMoving = (input * finalSpeed).sqrMagnitude > 0.1f;
+
+            if (!entity.RotationIsPrevented())
+            {
+                if (input.sqrMagnitude > 0.1f && !alwaysLookTowardsMouse)
+                {
+                    //Quaternion desiredRotation = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector2.up);
+                    Vector3 rotationDirectionRandomizer = new Vector3(Random.Range(-0.001f, 0.001f), 0f, Random.Range(-0.001f, 0.001f));
+
+                    Quaternion desiredRotation = Quaternion.LookRotation(input + rotationDirectionRandomizer, Vector3.up);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, movementRotationSpeed * Time.deltaTime);
+                }
+
+                //transform.LookAt(mouseWorldPosition);
+            }
+        }
+
+        movementAnimator.SetBool("isMoving", isMoving);
+    }
+
+
+
+
+
     void AttackControl()
     {
         if (Input.GetMouseButtonDown(0))
         {
             if (!isAttacking && !entity.AttackIsPrevented())
+            {
+                if (attackTowardsMouse && !entity.RotationIsPrevented())
+                {
+                    if (rotateToMouseImmediately)
+                        transform.rotation = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector2.up);
+                    if (rotateToMouseSmoothly)
+                        StartCoroutine(RotateOnAttack());
+                }
                 mainAnimator.SetTrigger("attack");
+            }
         }
         weaponCollider.enabled = isAttacking;
     }
+
+    IEnumerator RotateOnAttack()
+    {
+        Quaternion desiredRotation = Quaternion.LookRotation(mouseWorldPosition - transform.position, Vector2.up);
+
+        if (mouseWorldPosition.x == transform.position.x && mouseWorldPosition.z == transform.position.z)
+            yield return null;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < rotationDuration && !entity.RotationIsPrevented())
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, smoothSpeed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+
+            if (!isAttacking)
+                yield return null;
+        }
+    }
+
 
     public void OnBodyContactWithEnemy(EnemyBase enemy)
     {
@@ -87,6 +190,7 @@ public class Player : MonoBehaviour
     {
         isAttacking = active;
         //Debug.Log("[P] Swing state: " + isAttacking, this);
+        swordTrail.emitting = isAttacking;
     }
 
     void OnDeath()
