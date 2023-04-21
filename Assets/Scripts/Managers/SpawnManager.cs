@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class SpawnManager : SingletonOfType<SpawnManager>
 {
+    [Header("Main")]
     public bool spawnerIsActive = true;
 
-    public int currentEnemyCount = 0;
-
-    public int currentMaxEnemies = 1;
+    [Header("Progress")]
+    [ReadOnly] public int currentEnemyCount = 0;
+    [ReadOnly] public int currentMaxEnemies = 1;
     public float maxEnemiesIncreaseFrequency = 5f;
     public int limitOfMaxEnemies = 10;
-
     public float spawnFrequency = 3f;
-    public EnemyBase[] enemyPrefabs;
-    public bool useDebug;
-    public EnemyBase[] enemyPrefabsDebug;
+
+    [Header("Boundaries")]
     public Transform upperLeftBoundary;
     public Transform lowerRightBoundary;
+
+    [Header("Debug")]
+    public bool useDebug;
+    public EnemyBase[] enemyPrefabsDebug;
 
     //public EnemyBase[] ChosenEnemyPrefabs => useDebug ? enemyPrefabsDebug : enemyPrefabs;
 
@@ -64,6 +67,9 @@ public class SpawnManager : SingletonOfType<SpawnManager>
                 Vector3 targetPosition = GetRandomBoundaryPosition(horizontalPosition * -1, verticalPosition * -1);
 
                 EnemyBase chosenEnemy = SpawnChances.Instance.GetSpawnedEnemy(GameManager.Instance.NormalizedTimeOnRound);
+
+                if (useDebug)
+                    chosenEnemy = enemyPrefabsDebug.GetRandom();
 
                 EnemyBase newEnemy = Instantiate(chosenEnemy, spawnPosition, Quaternion.identity);
                 newEnemy.Initialize(targetPosition);

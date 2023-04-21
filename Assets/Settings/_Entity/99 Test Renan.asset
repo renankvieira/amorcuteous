@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc777ab16110cbd46ab34c15817d29e0, type: 3}
-  m_Name: 0 Greenie
+  m_Name: 99 Test Renan
   m_EditorClassIdentifier: 
   entityType: 10
   entityName: Greenie
   hp: 1
   priority: 0
   spawnsAimedAtPlayer: 0
-  movementSpeed: 3
+  movementSpeed: 0
   rotationToPlayer: 0
   touchEffectToPlayer: {fileID: 11400000, guid: 8c483540aa716f845bbed792fe7b164c, type: 2}
   touchEffectByPlayer: 10

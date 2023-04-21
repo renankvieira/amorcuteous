@@ -52,15 +52,11 @@ MonoBehaviour:
   maxEnemiesIncreaseFrequency: 3
   limitOfMaxEnemies: 10
   spawnFrequency: 0.78
-  enemyPrefabs:
-  - {fileID: 1860727309720252644, guid: b1ce9615837920f45985dc2f827e143e, type: 3}
-  - {fileID: 1860727309720252644, guid: 9e5916b2873a4984a92eb201263faf46, type: 3}
-  - {fileID: 1860727309720252644, guid: 9706e931bcc4553448c7231eb6791517, type: 3}
+  upperLeftBoundary: {fileID: 6643846238590570591}
+  lowerRightBoundary: {fileID: 5688555967270426693}
   useDebug: 0
   enemyPrefabsDebug:
   - {fileID: 1860727309720252644, guid: 9e5916b2873a4984a92eb201263faf46, type: 3}
-  upperLeftBoundary: {fileID: 6643846238590570591}
-  lowerRightBoundary: {fileID: 5688555967270426693}
 --- !u!1 &2607091093337162573
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2607091093337162573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 8.6}
+  m_LocalPosition: {x: -10.93, y: 0, z: 6.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -185,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5136251650417370206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.9, y: 0, z: -9.1}
+  m_LocalPosition: {x: 8.499, y: 0, z: -6.237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

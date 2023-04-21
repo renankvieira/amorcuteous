@@ -10167,9 +10167,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveByKeyboard: 1
-  mouseWorldPosition: {x: 0, y: 0, z: 0}
-  moveSpeed: 5
+  moveSpeed: 3.8
   minDistanceToMove: 0.25
+  movementRotationSpeed: 1080
   attackTowardsMouse: 1
   rotateToMouseImmediately: 1
   rotateToMouseSmoothly: 0
@@ -10177,9 +10177,10 @@ MonoBehaviour:
   rotationDuration: 0.2
   swordTrail: {fileID: 1064124623}
   isAttacking: 0
+  alwaysLookTowardsMouse: 0
   mainAnimator: {fileID: 8624048601141732449}
   movementAnimator: {fileID: 6232671288870861699}
-  weaponCollider: {fileID: 8624048600897097578}
+  weaponCollider: {fileID: 2121616184}
   entity: {fileID: 0}
 --- !u!114 &7675069679687525948
 MonoBehaviour:

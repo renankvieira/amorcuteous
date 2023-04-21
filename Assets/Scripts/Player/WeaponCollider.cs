@@ -14,12 +14,12 @@ public class WeaponCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (player.isAttacking)
-        {
+        //if (player.isAttacking)
+        //{
             if (other.CompareTag("Enemy"))
             {
                 other.gameObject.GetComponent<EnemyBase>().entity.TakeDamage(1, DamageType.PLAYER_SWORD, transform);
             }
-        }
+        //}
     }
 }
