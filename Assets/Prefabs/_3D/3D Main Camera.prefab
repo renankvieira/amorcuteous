@@ -27,8 +27,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217660461296594534}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 20, z: -15.02}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 20, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -60,8 +60,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 25
+  orthographic: 0
   orthographic size: 6
   m_Depth: -1
   m_CullingMask:
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34f658a919b1014984146b939be1cad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minPosition: {x: -5, y: 20, z: -33}
+  maxPosition: {x: 5, y: 20, z: -7}
+  useSmoothDamp: 0
   smoothDampFactor: 0.1
-  minPosition: {x: -5, y: 20, z: -25}
-  maxPosition: {x: 5, y: 20, z: -15}
