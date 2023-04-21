@@ -7,9 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1957105054164083869, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c52813824e11b45409e97d5fd66680c9, type: 2}
+    - target: {fileID: 6064278407335793134, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c52813824e11b45409e97d5fd66680c9, type: 2}
     - target: {fileID: 7007869772344754983, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
       propertyPath: m_Name
-      value: EnemyDeathObject  Base
+      value: EnemyDeathObject 2
       objectReference: {fileID: 0}
     - target: {fileID: 7975787091861805477, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +63,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8820188531121429843, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c52813824e11b45409e97d5fd66680c9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}

@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1957105054164083869, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 01e11e2b14f13ef489ecf9efb9341574, type: 2}
+    - target: {fileID: 6064278407335793134, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 01e11e2b14f13ef489ecf9efb9341574, type: 2}
     - target: {fileID: 7007869772344754983, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
       propertyPath: m_Name
       value: EnemyDeathObject 1
@@ -59,6 +67,10 @@ PrefabInstance:
       propertyPath: entityEffectConfig
       value: 
       objectReference: {fileID: 11400000, guid: bc6fda1de52ee194990af48d872bcd98, type: 2}
+    - target: {fileID: 8820188531121429843, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 01e11e2b14f13ef489ecf9efb9341574, type: 2}
     - target: {fileID: 9028618335521843401, guid: 59a63a1e6bb4f2748ab702025686b3f2, type: 3}
       propertyPath: m_IsActive
       value: 1
