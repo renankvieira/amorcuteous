@@ -166,7 +166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771724359}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.687, y: 0.94, z: 0}
+  m_LocalPosition: {x: -0.36, y: 0.94, z: 0}
   m_LocalScale: {x: 0.24131246, y: 0.14999998, z: 0.07125}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10166,12 +10166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54222e104362154ba0a449f9cfbfb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveByKeyboard: 1
+  moveByKeyboard: 0
   moveSpeed: 3.8
   minDistanceToMove: 0.25
   movementRotationSpeed: 1080
-  attackTowardsMouse: 1
-  rotateToMouseImmediately: 1
+  attackTowardsMouse: 0
+  rotateToMouseImmediately: 0
   rotateToMouseSmoothly: 0
   smoothSpeed: 1080
   rotationDuration: 0.2
@@ -16201,6 +16201,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1068858953880398308}
     m_Modifications:
+    - target: {fileID: 1477445352076356195, guid: eddda34bed9f8b8468c00b4fdb8260ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663867745784542149, guid: eddda34bed9f8b8468c00b4fdb8260ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667975121076308249, guid: eddda34bed9f8b8468c00b4fdb8260ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137702069590754485, guid: eddda34bed9f8b8468c00b4fdb8260ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6232671287833500857, guid: eddda34bed9f8b8468c00b4fdb8260ce, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1

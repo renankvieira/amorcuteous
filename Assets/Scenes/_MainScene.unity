@@ -130,14 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1771724360, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 499998784826912288, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1068858953194172568, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -185,22 +177,6 @@ PrefabInstance:
     - target: {fileID: 1068858953194172569, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
       propertyPath: m_Name
       value: Player_new 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1477445352216730381, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1663867745651491499, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1667975121204115575, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137702069993551323, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
@@ -790,6 +766,10 @@ PrefabInstance:
       value: Player_new 2
       objectReference: {fileID: 0}
     - target: {fileID: 1068858953194172569, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068858953880398309, guid: e5ad94754db161d4d844fb2d46eb7e6b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
