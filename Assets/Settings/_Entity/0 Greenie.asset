@@ -17,7 +17,7 @@ MonoBehaviour:
   hp: 1
   priority: 0
   spawnsAimedAtPlayer: 0
-  movementSpeed: 3
+  movementSpeed: 4
   rotationToPlayer: 0
   touchEffectToPlayer: {fileID: 11400000, guid: 8c483540aa716f845bbed792fe7b164c, type: 2}
   touchEffectByPlayer: 10

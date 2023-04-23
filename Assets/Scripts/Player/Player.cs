@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Input")]
     public bool moveByKeyboard = true;
+    public bool useFakeInput = false;
 
     Vector3 mouseWorldPosition = Vector3.right;
     bool IsMouseOverGameWindow { get { return !(0 > Input.mousePosition.x || 0 > Input.mousePosition.y || Screen.width < Input.mousePosition.x || Screen.height < Input.mousePosition.y); } }
@@ -57,6 +58,29 @@ public class Player : MonoBehaviour
         if (plane.Raycast(ray, out float distance))
             mouseWorldPosition = ray.GetPoint(distance);
 
+        if (useFakeInput)
+        {
+            switch (Mathf.FloorToInt(Time.time * 1.5f) % 4)
+            {
+                case 0:
+                    mouseWorldPosition = transform.position + Vector3.forward;
+                    break;
+                case 1:
+                    mouseWorldPosition = transform.position + Vector3.left;
+                    break;
+                case 2:
+                    mouseWorldPosition = transform.position + Vector3.back;
+                    break;
+                case 3:
+                    mouseWorldPosition = transform.position + Vector3.right;
+                    break;
+                case 4:
+                    mouseWorldPosition = transform.position;
+                    break;
+            }
+        }
+
+
         if (alwaysLookTowardsMouse)
         {
             if (!isAttacking && !entity.RotationIsPrevented())
@@ -65,6 +89,7 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, movementRotationSpeed * Time.deltaTime);
             }
         }
+
 
     }
 
@@ -78,9 +103,10 @@ public class Player : MonoBehaviour
         //bool isFarEnoughFromMouse = transform.position != mouseWorldPosition;
         bool isFarEnoughFromMouse = Vector3.Distance(transform.position, mouseWorldPosition) >= minDistanceToMove;
 
-        if (isFarEnoughFromMouse && !isAttacking && IsMouseOverGameWindow && GameManager.Instance.roundIsOn)
+        if (isFarEnoughFromMouse && !isAttacking && (IsMouseOverGameWindow || useFakeInput) && GameManager.Instance.roundIsOn)
         {
             float finalSpeed = moveSpeed * entity.GetSpeedMultiplier();
+
             transform.position = Vector3.MoveTowards(transform.position, mouseWorldPosition, finalSpeed * Time.deltaTime);
 
             isMoving = finalSpeed > 0f;
@@ -104,10 +130,6 @@ public class Player : MonoBehaviour
     {
         if (!moveByKeyboard)
             return;
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (plane.Raycast(ray, out float distance))
-            mouseWorldPosition = ray.GetPoint(distance);
 
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
         bool isMoving = false;
@@ -195,7 +217,6 @@ public class Player : MonoBehaviour
 
     void OnDeath()
     {
-        print(1);
         GameManager.Instance.FinishRound(false);
     }
 }

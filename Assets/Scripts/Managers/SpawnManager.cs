@@ -54,32 +54,41 @@ public class SpawnManager : SingletonOfType<SpawnManager>
         {
             if (currentEnemyCount < currentMaxEnemies && spawnerIsActive)
             {
-                int horizontalPosition = 0;
-                int verticalPosition = 0;
+                //Spawns something in between 1 and 1 + (missing enemies/3)
+                int missingEnemies = currentMaxEnemies - currentEnemyCount;
+                int spawnedEnemies = 1 + (missingEnemies / 3);
+                spawnedEnemies = Random.Range(1, spawnedEnemies + 1);
 
-                while (Mathf.Abs(horizontalPosition) - Mathf.Abs(verticalPosition) == 0)
-                {
-                    horizontalPosition = Random.Range(-1, 2);
-                    verticalPosition = Random.Range(-1, 2);
-                }
-
-                Vector3 spawnPosition = GetRandomBoundaryPosition(horizontalPosition, verticalPosition);
-                Vector3 targetPosition = GetRandomBoundaryPosition(horizontalPosition * -1, verticalPosition * -1);
-
-                EnemyBase chosenEnemy = SpawnChances.Instance.GetSpawnedEnemy(GameManager.Instance.NormalizedTimeOnRound);
-
-                if (useDebug)
-                    chosenEnemy = enemyPrefabsDebug.GetRandom();
-
-                EnemyBase newEnemy = Instantiate(chosenEnemy, spawnPosition, Quaternion.identity);
-                newEnemy.Initialize(targetPosition);
-
-                currentEnemyCount++;
+                for (int i = 0; i < spawnedEnemies; i++)
+                    SpawnOneEnemy();
             }
-
-
             yield return new WaitForSeconds(spawnFrequency);
         }
+    }
+
+    void SpawnOneEnemy()
+    {
+        int horizontalPosition = 0;
+        int verticalPosition = 0;
+
+        while (Mathf.Abs(horizontalPosition) - Mathf.Abs(verticalPosition) == 0)
+        {
+            horizontalPosition = Random.Range(-1, 2);
+            verticalPosition = Random.Range(-1, 2);
+        }
+
+        Vector3 spawnPosition = GetRandomBoundaryPosition(horizontalPosition, verticalPosition);
+        Vector3 targetPosition = GetRandomBoundaryPosition(horizontalPosition * -1, verticalPosition * -1);
+
+        EnemyBase chosenEnemy = SpawnChances.Instance.GetSpawnedEnemy(GameManager.Instance.NormalizedTimeOnRound);
+
+        if (useDebug)
+            chosenEnemy = enemyPrefabsDebug.GetRandom();
+
+        EnemyBase newEnemy = Instantiate(chosenEnemy, spawnPosition, Quaternion.identity);
+        newEnemy.Initialize(targetPosition);
+
+        currentEnemyCount++;
     }
 
 

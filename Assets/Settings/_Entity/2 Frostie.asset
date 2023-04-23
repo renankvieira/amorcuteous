@@ -18,7 +18,7 @@ MonoBehaviour:
   priority: -3
   spawnsAimedAtPlayer: 1
   movementSpeed: 6
-  rotationToPlayer: 5
+  rotationToPlayer: 60
   touchEffectToPlayer: {fileID: 0}
   touchEffectByPlayer: 20
   touchEffectToSibling: 20
