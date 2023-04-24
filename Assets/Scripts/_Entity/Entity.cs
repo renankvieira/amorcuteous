@@ -134,6 +134,10 @@ public class Entity : MonoBehaviour
         if (isDead)
             return;
 
+        foreach (DamageType immunity in entityConfig.damageTypeImmunities)
+            if (immunity == damageType)
+                return;
+
         hp -= damage;
 
         if (hp <= 0 && !immortal)
@@ -141,7 +145,7 @@ public class Entity : MonoBehaviour
             if (damageType == DamageType.PLAYER_SWORD)
                 Die(damageDealerTransform.transform);
             else
-                Die(null);
+                Die(damageDealerTransform);
         }
     }
 
@@ -205,6 +209,10 @@ public class Entity : MonoBehaviour
         if (isDead)
             return;
 
+        foreach (EntityEffectConfig immunity in entityConfig.effectImmunities)
+            if (immunity == config)
+                return;
+
         if (config.debug.logUsage || logEffects)
             Debug.LogFormat(this, "[E] Effect on: [{0}], [{1}]", config.name, gameObject.name);
 
@@ -230,7 +238,7 @@ public class Entity : MonoBehaviour
         currentEffects.Add(newEffect);
 
         if (config.damage.damage > 0)
-            TakeDamage(config.damage.damage, config.damage.damageType, null);
+            TakeDamage(config.damage.damage, config.damage.damageType, applier);
 
         if (config.visuals.attachOnActivation)
             newEffect.effectAttachment = Instantiate(config.visuals.attachOnActivation, transform.position, transform.rotation, transform);

@@ -86,6 +86,9 @@ public class SpawnManager : SingletonOfType<SpawnManager>
             chosenEnemy = enemyPrefabsDebug.GetRandom();
 
         EnemyBase newEnemy = Instantiate(chosenEnemy, spawnPosition, Quaternion.identity);
+
+        if (newEnemy.entityConfig.spawnsAimedAtPlayer && GameManager.Instance.player != null)
+            targetPosition = GameManager.Instance.player.transform.position;
         newEnemy.Initialize(targetPosition);
 
         currentEnemyCount++;

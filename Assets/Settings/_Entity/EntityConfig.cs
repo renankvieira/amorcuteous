@@ -19,10 +19,15 @@ public class EntityConfig : ScriptableObject
     public TouchEffectByPlayer touchEffectByPlayer;
     public TouchEffectToSibling touchEffectToSibling;
 
+    [Header("Immunities")]
+    public List<EntityEffectConfig> effectImmunities;
+    public List<DamageType> damageTypeImmunities;
+
     [Header("Death")]
     public EnemyDeathObject deathObject;
     public EntityEffectConfig gooEntityEffect;
     public EntityEffectConfig blastEntityEffect;
+    public EntityEffectConfig poolEntityEffect;
 }
 
 public enum EntityType
