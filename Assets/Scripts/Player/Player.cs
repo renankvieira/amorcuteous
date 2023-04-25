@@ -80,7 +80,6 @@ public class Player : MonoBehaviour
             }
         }
 
-
         if (alwaysLookTowardsMouse)
         {
             if (!isAttacking && !entity.RotationIsPrevented())
@@ -89,8 +88,6 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, movementRotationSpeed * Time.deltaTime);
             }
         }
-
-
     }
 
     void MovementControlMouse()
@@ -159,15 +156,11 @@ public class Player : MonoBehaviour
         movementAnimator.SetBool("isMoving", isMoving);
     }
 
-
-
-
-
     void AttackControl()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!isAttacking && !entity.AttackIsPrevented())
         {
-            if (!isAttacking && !entity.AttackIsPrevented())
+            if (Input.GetMouseButtonDown(0))
             {
                 if (attackTowardsMouse && !entity.RotationIsPrevented())
                 {
@@ -178,7 +171,12 @@ public class Player : MonoBehaviour
                 }
                 mainAnimator.SetTrigger("attack");
             }
+            else if (Input.GetMouseButton(1))
+            {
+                mainAnimator.SetTrigger("whirlwind");
+            }
         }
+
         weaponCollider.enabled = isAttacking;
     }
 
