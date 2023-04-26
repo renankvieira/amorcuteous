@@ -8,6 +8,8 @@ public class EntityEffectConfig : ScriptableObject
     [Header("Main")]
     public string effectName = "---";
     public float duration = 3f;
+    //primary color? secondary color?
+    //dismiss material?
 
     public Damage damage;
     public Movement movement;

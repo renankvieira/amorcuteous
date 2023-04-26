@@ -10,9 +10,12 @@ public class SpawnManager : SingletonOfType<SpawnManager>
     [Header("Progress")]
     [ReadOnly] public int currentEnemyCount = 0;
     [ReadOnly] public int currentMaxEnemies = 1;
-    public float maxEnemiesIncreaseFrequency = 5f;
-    public int limitOfMaxEnemies = 10;
+    //public float maxEnemiesIncreaseFrequency = 5f;
+    //public int limitOfMaxEnemies = 10;
     public float spawnFrequency = 3f;
+
+    public AnimationCurve maxEnemiesCurve;
+    [Range(0, 30)] public int curveMagnitude = 20;
 
     [Header("Boundaries")]
     public Transform upperLeftBoundary;
@@ -32,26 +35,29 @@ public class SpawnManager : SingletonOfType<SpawnManager>
         if (!useDebug)
             Debug.LogWarning("[SM] Using debug enemies.", this);
 
-        StartCoroutine(MaxEnemiesControlCoroutine());
+        //StartCoroutine(MaxEnemiesControlCoroutine());
         StartCoroutine(SpawnControlCoroutine());
     }
 
-    IEnumerator MaxEnemiesControlCoroutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(maxEnemiesIncreaseFrequency);
-            currentMaxEnemies++;
+    //IEnumerator MaxEnemiesControlCoroutine()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(maxEnemiesIncreaseFrequency);
+    //        currentMaxEnemies++;
 
-            if (currentMaxEnemies >= limitOfMaxEnemies)
-                yield break;
-        }
-    }
+    //        if (currentMaxEnemies >= limitOfMaxEnemies)
+    //            yield break;
+    //    }
+    //}
 
     IEnumerator SpawnControlCoroutine()
     {
         while (true)
         {
+            float maxEnemiesByCurve = maxEnemiesCurve.Evaluate(GameManager.Instance.NormalizedTimeOnRound) * curveMagnitude;
+            currentMaxEnemies = (int)maxEnemiesByCurve;
+
             if (currentEnemyCount < currentMaxEnemies && spawnerIsActive)
             {
                 //Spawns something in between 1 and 1 + (missing enemies/3)
